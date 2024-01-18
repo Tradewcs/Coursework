@@ -133,8 +133,24 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
         number2.insertBack(static_cast<int>(digit));
     }
 
+
+    std::cout << "num1: ";
+    for (auto it = number1.begin(); it != number1.end(); ++it)
+    {
+        std::cout << (int)(*it) << "|";
+    }
+    std::cout << std::endl;
+    std::cout << "num2: ";
+    for (auto it = number2.begin(); it != number2.end(); ++it)
+    {
+        std::cout << (int)(*it) << "|";
+    }
+
+
     int carry = 0;
+    std::cout << "len before: " << number1.getSize();
     make_equal_length(number1, number2);
+    std::cout << std::endl << "len after: " << number1.getSize();
 
     auto it1 = number1.rbegin();
     auto it2 = number2.rbegin();
@@ -153,6 +169,9 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
             carry = 0;
         }
 
+        std::cout << std::endl;
+        std::cout << "sum: " << sum << std::endl;
+
         result.insertFront(static_cast<std::byte>(sum));
 
         ++it1;
@@ -163,6 +182,15 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
     {
         result.insertFront(static_cast<std::byte>(carry));
     }
+
+
+    std::cout << "result: ";
+    for (auto it = result.begin(); it != result.end(); it++)
+    {
+        std::cout << (int)(*it) << " ";
+    }
+    std::cout << std::endl;
+
 
     this->digits = result;
 

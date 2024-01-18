@@ -54,12 +54,13 @@ int main2() {
 }
 
 int main() {
-    LongInteger a(21);
-    LongInteger b(9);
+    LongInteger a(1);
+    LongInteger b(19);
 
     cout << a << " " << b << endl;
 
     a += b;
+    cout << endl;
 
     cout << a << endl;
 
