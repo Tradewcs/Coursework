@@ -40,5 +40,6 @@ public:
     void make_equal_length(LongInteger& a, LongInteger& b);
     void make_equal_length(List<int>& a, List<int>& b);
     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
-    void remove_heading_zeros();
+    void remove_heading_zeros(List<std::byte> &result);
+    void remove_heading_zeros(List<int> &result);
 };
