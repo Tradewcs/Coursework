@@ -6,8 +6,9 @@ using namespace std;
 
 int main() {
     LongInteger a = 7;
-    
-    cout << a << endl;
+    LongInteger b = -7;
 
+    cout << (a - b) << endl;
+    
     return 0;
 }

@@ -20,6 +20,9 @@ public:
     static LongInteger abs(const LongInteger& num);
 
     friend std::ostream& operator<<(std::ostream& os, const LongInteger& obj);
+
+    LongInteger& operator-(const LongInteger& b);
+    LongInteger& operator+(const LongInteger& b);
     
     LongInteger& operator+=(const LongInteger& b);
     LongInteger& operator-=(const LongInteger& b);
