@@ -21,13 +21,25 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const LongInteger& obj);
 
-    LongInteger& operator-(const LongInteger& b);
-    LongInteger& operator+(const LongInteger& b);
+    LongInteger operator+() const;
+    LongInteger operator-() const;
+
+    LongInteger& operator-(const LongInteger& b) const;
+    LongInteger& operator+(const LongInteger& b) const;
+
+    LongInteger& operator*(const LongInteger& b) const;
+    LongInteger& operator/(const LongInteger& b) const;
+    // + - * / % ++ -- 
     
     LongInteger& operator+=(const LongInteger& b);
     LongInteger& operator-=(const LongInteger& b);
 
+    LongInteger& operator*=(const LongInteger& b);
+    LongInteger& operator/=(const LongInteger& b);
+
     LongInteger& operator++();
+
+    // LongInteger& power(const LongInteger)
 
     void foo(LongInteger &o) {
         make_equal_length((*this), o);

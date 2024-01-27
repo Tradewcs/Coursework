@@ -72,6 +72,17 @@ LongInteger &LongInteger::operator=(const LongInteger &other)
     return *this;
 }
 
+LongInteger LongInteger::operator+() const {
+    LongInteger tmp = *this;
+    return tmp;
+}
+
+LongInteger LongInteger::operator-() const {
+    LongInteger tmp = *this;
+    tmp.is_negative = !tmp.is_negative;
+    return tmp;
+}
+
 std::ostream &operator<<(std::ostream &os, const LongInteger &obj)
 {
     if (obj.is_negative)
@@ -279,6 +290,43 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
     remove_heading_zeros(result);
 
     this->digits = result;
+
+    return *this;
+}
+
+LongInteger &LongInteger::operator*=(const LongInteger& other) {
+    List<int> number1;
+    List<int> number2;
+    
+    List<std::byte> result;
+
+    for (std::byte digit : this->digits)
+    {
+        number1.insertBack(static_cast<int>(digit));
+    }
+
+    for (std::byte digit : other.digits) 
+    {
+        number1.insertBack(static_cast<int>(digit));
+    }
+
+    auto it1 = number1.rbegin();
+    auto it2 = number2.rbegin();
+
+    List<int> numbers_to_add;
+
+    while (it1 != number1.rend())
+    {
+        numbers_to_add.insertBack(0);
+
+        while (it2 != number2.rend())
+        {
+
+            it2--;
+        }
+
+        it1--;
+    }
 
     return *this;
 }
