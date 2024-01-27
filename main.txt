@@ -1,0 +1,104 @@
+In file included from main.cpp:3:
+./LongInteger.cpp:359:15: error: no matching constructor for initialization of 'List<int>'
+    List<int> result(std::to_string(res));
+              ^      ~~~~~~~~~~~~~~~~~~~
+./List.h:23:5: note: candidate constructor not viable: no known conversion from 'string' (aka 'basic_string<char>') to 'int' for 1st argument
+    List(int size);
+    ^
+./List.h:24:5: note: candidate constructor not viable: no known conversion from 'string' (aka 'basic_string<char>') to 'const List<int>' for 1st argument
+    List(const List<T> &other);
+    ^
+./List.h:22:5: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+    List();
+    ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:11:13: error: no viable conversion from 'Node<int> *' to 'Node<int>'
+    Node<T> current = this->head;
+            ^         ~~~~~~~~~~
+./LongInteger.cpp:71:15: note: in instantiation of member function 'List<int>::List' requested here
+    List<int> intList(byteList.getSize());
+              ^
+./List.h:5:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'Node<int> *' to 'const Node<int> &' for 1st argument; dereference the argument with *
+class Node {
+      ^
+./List.h:5:7: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'Node<int> *' to 'Node<int> &&' for 1st argument
+./List.h:11:5: note: candidate constructor not viable: no known conversion from 'Node<int> *' to 'const int' for 1st argument
+    Node(const T &value) : data(value), prev(nullptr), next(nullptr) {}
+    ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:13:16: error: member reference type 'Node<int>' is not a pointer; did you mean to use '.'?
+        current->next = new Node<T>(0);
+        ~~~~~~~^~
+               .
+./List.cpp:14:17: error: no viable overloaded '='
+        current = current.next;
+        ~~~~~~~ ^ ~~~~~~~~~~~~
+./List.h:5:7: note: candidate function (the implicit copy assignment operator) not viable: no known conversion from 'Node<int> *' to 'const Node<int>' for 1st argument; dereference the argument with *
+class Node {
+      ^
+./List.h:5:7: note: candidate function (the implicit move assignment operator) not viable: no known conversion from 'Node<int> *' to 'Node<int>' for 1st argument; dereference the argument with *
+class Node {
+      ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:8:22: error: no matching constructor for initialization of 'Node<byte>'
+    this->head = new Node<T>(0);
+                     ^       ~
+./LongInteger.cpp:80:21: note: in instantiation of member function 'List<std::byte>::List' requested here
+    List<std::byte> byteList(intList.getSize());
+                    ^
+./List.h:5:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'int' to 'const Node<byte>' for 1st argument
+class Node {
+      ^
+./List.h:5:7: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'int' to 'Node<byte>' for 1st argument
+./List.h:11:5: note: candidate constructor not viable: no known conversion from 'int' to 'const std::byte' for 1st argument
+    Node(const T &value) : data(value), prev(nullptr), next(nullptr) {}
+    ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:11:13: error: no viable conversion from 'Node<byte> *' to 'Node<byte>'
+    Node<T> current = this->head;
+            ^         ~~~~~~~~~~
+./List.h:5:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'Node<byte> *' to 'const Node<byte> &' for 1st argument; dereference the argument with *
+class Node {
+      ^
+./List.h:5:7: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'Node<byte> *' to 'Node<byte> &&' for 1st argument
+./List.h:11:5: note: candidate constructor not viable: no known conversion from 'Node<byte> *' to 'const std::byte' for 1st argument
+    Node(const T &value) : data(value), prev(nullptr), next(nullptr) {}
+    ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:13:16: error: member reference type 'Node<byte>' is not a pointer; did you mean to use '.'?
+        current->next = new Node<T>(0);
+        ~~~~~~~^~
+               .
+./List.cpp:13:29: error: no matching constructor for initialization of 'Node<byte>'
+        current->next = new Node<T>(0);
+                            ^       ~
+./List.h:5:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'int' to 'const Node<byte>' for 1st argument
+class Node {
+      ^
+./List.h:5:7: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'int' to 'Node<byte>' for 1st argument
+./List.h:11:5: note: candidate constructor not viable: no known conversion from 'int' to 'const std::byte' for 1st argument
+    Node(const T &value) : data(value), prev(nullptr), next(nullptr) {}
+    ^
+In file included from main.cpp:3:
+In file included from ./LongInteger.cpp:6:
+In file included from ./LongInteger.h:2:
+./List.cpp:14:17: error: no viable overloaded '='
+        current = current.next;
+        ~~~~~~~ ^ ~~~~~~~~~~~~
+./List.h:5:7: note: candidate function (the implicit copy assignment operator) not viable: no known conversion from 'Node<byte> *' to 'const Node<byte>' for 1st argument; dereference the argument with *
+class Node {
+      ^
+./List.h:5:7: note: candidate function (the implicit move assignment operator) not viable: no known conversion from 'Node<byte> *' to 'Node<byte>' for 1st argument; dereference the argument with *
+class Node {
+      ^
+9 errors generated.

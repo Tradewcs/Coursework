@@ -27,7 +27,7 @@ public:
     List& operator=(const List& other);
 
     bool isEmpty();
-    int getSize();
+    int getSize() const;
 
     void insertFront(T value);
     void insertBack(T value);

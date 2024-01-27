@@ -1,0 +1,969 @@
+./compile: line 1: limit: command not found
+In file included from LongInteger.cpp:1:
+LongInteger.h:6:15: error: ‘byte’ is not a member of ‘std’
+    6 |     List<std::byte> digits;
+      |               ^~~~
+LongInteger.h:6:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:6:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:6:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:6:19: error: template argument 1 is invalid
+    6 |     List<std::byte> digits;
+      |                   ^
+LongInteger.h:13:27: error: ‘byte’ is not a member of ‘std’
+   13 |     LongInteger(List<std::byte> digits, bool is_negative);
+      |                           ^~~~
+LongInteger.h:13:27: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:13:27: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:13:27: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:13:31: error: template argument 1 is invalid
+   13 |     LongInteger(List<std::byte> digits, bool is_negative);
+      |                               ^
+LongInteger.h:57:38: error: ‘byte’ is not a member of ‘std’
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                      ^~~~
+LongInteger.h:57:38: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:38: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:57:38: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:42: error: template argument 1 is invalid
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                          ^
+LongInteger.h:57:58: error: ‘byte’ is not a member of ‘std’
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                                          ^~~~
+LongInteger.h:57:58: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:58: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:57:58: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:62: error: template argument 1 is invalid
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                                              ^
+LongInteger.h:58:41: error: ‘byte’ is not a member of ‘std’
+   58 |     void remove_heading_zeros(List<std::byte> &result);
+      |                                         ^~~~
+LongInteger.h:58:41: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:58:41: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:58:41: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:58:45: error: template argument 1 is invalid
+   58 |     void remove_heading_zeros(List<std::byte> &result);
+      |                                             ^
+LongInteger.h: In member function ‘void LongInteger::foo(LongInteger&)’:
+LongInteger.h:47:19: error: ‘byte’ is not a member of ‘std’
+   47 |         for (std::byte num : digits) {
+      |                   ^~~~
+LongInteger.h:47:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:51:5: error: expected primary-expression before ‘}’ token
+   51 |     }
+      |     ^
+LongInteger.h:51:5: error: expected ‘)’ before ‘}’ token
+LongInteger.h:47:13: note: to match this ‘(’
+   47 |         for (std::byte num : digits) {
+      |             ^
+LongInteger.h:51:5: error: expected primary-expression before ‘}’ token
+   51 |     }
+      |     ^
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger()’:
+LongInteger.cpp:7:12: error: request for member ‘insertBack’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+    7 |     digits.insertBack((std::byte)0);
+      |            ^~~~~~~~~~
+LongInteger.cpp:7:29: error: ‘byte’ is not a member of ‘std’
+    7 |     digits.insertBack((std::byte)0);
+      |                             ^~~~
+LongInteger.cpp:7:29: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger(long long int)’:
+LongInteger.cpp:22:16: error: request for member ‘insertBack’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   22 |         digits.insertBack((std::byte)0);
+      |                ^~~~~~~~~~
+LongInteger.cpp:22:33: error: ‘byte’ is not a member of ‘std’
+   22 |         digits.insertBack((std::byte)0);
+      |                                 ^~~~
+LongInteger.cpp:22:33: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:27:16: error: request for member ‘insertFront’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   27 |         digits.insertFront((std::byte)(num % 10));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:27:34: error: ‘byte’ is not a member of ‘std’
+   27 |         digits.insertFront((std::byte)(num % 10));
+      |                                  ^~~~
+LongInteger.cpp:27:34: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger(const std::string&)’:
+LongInteger.cpp:49:16: error: request for member ‘insertFront’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   49 |         digits.insertFront((std::byte)(num[i] - '0'));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:49:34: error: ‘byte’ is not a member of ‘std’
+   49 |         digits.insertFront((std::byte)(num[i] - '0'));
+      |                                  ^~~~
+LongInteger.cpp:49:34: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:55:36: error: ‘byte’ is not a member of ‘std’
+   55 | LongInteger::LongInteger(List<std::byte> digits, bool is_negative)
+      |                                    ^~~~
+LongInteger.cpp:55:36: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:55:36: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:55:36: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:55:40: error: template argument 1 is invalid
+   55 | LongInteger::LongInteger(List<std::byte> digits, bool is_negative)
+      |                                        ^
+LongInteger.cpp: In destructor ‘LongInteger::~LongInteger()’:
+LongInteger.cpp:63:12: error: request for member ‘clear’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   63 |     digits.clear();
+      |            ^~~~~
+LongInteger.cpp: In function ‘std::ostream& operator<<(std::ostream&, const LongInteger&)’:
+LongInteger.cpp:94:27: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
+   94 |     for (auto digit : obj.digits)
+      |                           ^~~~~~
+      |                           std::begin
+In file included from /usr/include/c++/13/string:53,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from List.h:2,
+                 from List.cpp:1,
+                 from LongInteger.h:2:
+/usr/include/c++/13/bits/range_access.h:95:5: note: ‘std::begin’ declared here
+   95 |     begin(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~~~
+LongInteger.cpp:94:27: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
+   94 |     for (auto digit : obj.digits)
+      |                           ^~~~~~
+      |                           std::end
+/usr/include/c++/13/bits/range_access.h:106:5: note: ‘std::end’ declared here
+  106 |     end(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator+=(const LongInteger&)’:
+LongInteger.cpp:140:15: error: ‘byte’ is not a member of ‘std’
+  140 |     List<std::byte> result;
+      |               ^~~~
+LongInteger.cpp:140:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:140:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:140:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:140:19: error: template argument 1 is invalid
+  140 |     List<std::byte> result;
+      |                   ^
+LongInteger.cpp:142:15: error: ‘byte’ is not a member of ‘std’
+  142 |     for (std::byte digit : this->digits)
+      |               ^~~~
+LongInteger.cpp:142:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:147:5: error: expected primary-expression before ‘for’
+  147 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:145:6: error: expected ‘;’ before ‘for’
+  145 |     }
+      |      ^
+      |      ;
+  146 | 
+  147 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:147:5: error: expected primary-expression before ‘for’
+  147 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:145:6: error: expected ‘)’ before ‘for’
+  145 |     }
+      |      ^
+      |      )
+  146 | 
+  147 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:142:9: note: to match this ‘(’
+  142 |     for (std::byte digit : this->digits)
+      |         ^
+LongInteger.cpp:147:15: error: ‘byte’ is not a member of ‘std’
+  147 |     for (std::byte digit : num.digits)
+      |               ^~~~
+LongInteger.cpp:147:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:153:40: error: expected ‘)’ before ‘;’ token
+  153 |     make_equal_length(number1, number2);
+      |                                        ^
+      |                                        )
+LongInteger.cpp:147:9: note: to match this ‘(’
+  147 |     for (std::byte digit : num.digits)
+      |         ^
+LongInteger.cpp:160:37: error: ‘carry’ was not declared in this scope
+  160 |         int sum = (*it1) + (*it2) + carry;
+      |                                     ^~~~~
+LongInteger.cpp:165:16: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:165:45: error: ‘byte’ in namespace ‘std’ does not name a type
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                                             ^~~~
+LongInteger.cpp:165:40: note: ‘std::byte’ is only available from C++17 onwards
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                                        ^~~
+LongInteger.cpp:171:9: error: ‘carry’ was not declared in this scope
+  171 |     if (carry > 0)
+      |         ^~~~~
+LongInteger.cpp:173:16: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:173:45: error: ‘byte’ in namespace ‘std’ does not name a type
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                                             ^~~~
+LongInteger.cpp:173:40: note: ‘std::byte’ is only available from C++17 onwards
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                                        ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator-=(const LongInteger&)’:
+LongInteger.cpp:200:15: error: ‘byte’ is not a member of ‘std’
+  200 |     for (std::byte digit : this->digits)
+      |               ^~~~
+LongInteger.cpp:200:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:205:5: error: expected primary-expression before ‘for’
+  205 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:203:6: error: expected ‘;’ before ‘for’
+  203 |     }
+      |      ^
+      |      ;
+  204 | 
+  205 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:205:5: error: expected primary-expression before ‘for’
+  205 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:203:6: error: expected ‘)’ before ‘for’
+  203 |     }
+      |      ^
+      |      )
+  204 | 
+  205 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:200:9: note: to match this ‘(’
+  200 |     for (std::byte digit : this->digits)
+      |         ^
+LongInteger.cpp:205:15: error: ‘byte’ is not a member of ‘std’
+  205 |     for (std::byte digit : num.digits)
+      |               ^~~~
+LongInteger.cpp:205:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:210:22: error: could not convert ‘((LongInteger*)this)->LongInteger::make_equal_length(number1, number2)’ from ‘void’ to ‘bool’
+  210 |     make_equal_length(number1, number2);
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+      |                      |
+      |                      void
+LongInteger.cpp:212:5: error: expected primary-expression before ‘bool’
+  212 |     bool is_numbers_equal = true;
+      |     ^~~~
+LongInteger.cpp:210:41: error: expected ‘)’ before ‘bool’
+  210 |     make_equal_length(number1, number2);
+      |                                         ^
+      |                                         )
+  211 | 
+  212 |     bool is_numbers_equal = true;
+      |     ~~~~                                 
+LongInteger.cpp:205:9: note: to match this ‘(’
+  205 |     for (std::byte digit : num.digits)
+      |         ^
+LongInteger.cpp:221:13: error: ‘is_numbers_equal’ was not declared in this scope
+  221 |             is_numbers_equal = false;
+      |             ^~~~~~~~~~~~~~~~
+LongInteger.cpp:227:13: error: ‘is_numbers_equal’ was not declared in this scope
+  227 |             is_numbers_equal = false;
+      |             ^~~~~~~~~~~~~~~~
+LongInteger.cpp:236:9: error: ‘is_numbers_equal’ was not declared in this scope
+  236 |     if (is_numbers_equal)
+      |         ^~~~~~~~~~~~~~~~
+LongInteger.cpp:239:19: error: ‘byte’ is not a member of ‘std’
+  239 |         List<std::byte> res;
+      |                   ^~~~
+LongInteger.cpp:239:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:239:19: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:239:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:239:23: error: template argument 1 is invalid
+  239 |         List<std::byte> res;
+      |                       ^
+LongInteger.cpp:240:13: error: request for member ‘insertBack’ in ‘res’, which is of non-class type ‘int’
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |             ^~~~~~~~~~
+LongInteger.cpp:240:41: error: ‘byte’ in namespace ‘std’ does not name a type
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |                                         ^~~~
+LongInteger.cpp:240:36: note: ‘std::byte’ is only available from C++17 onwards
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |                                    ^~~
+LongInteger.cpp:247:15: error: ‘byte’ is not a member of ‘std’
+  247 |     List<std::byte> result;
+      |               ^~~~
+LongInteger.cpp:247:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:247:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:247:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:247:19: error: template argument 1 is invalid
+  247 |     List<std::byte> result;
+      |                   ^
+LongInteger.cpp:265:20: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                    ^~~~~~~~~~~
+LongInteger.cpp:265:49: error: ‘byte’ in namespace ‘std’ does not name a type
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                                                 ^~~~
+LongInteger.cpp:265:44: note: ‘std::byte’ is only available from C++17 onwards
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                                            ^~~
+LongInteger.cpp:287:20: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                    ^~~~~~~~~~~
+LongInteger.cpp:287:49: error: ‘byte’ in namespace ‘std’ does not name a type
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                                                 ^~~~
+LongInteger.cpp:287:44: note: ‘std::byte’ is only available from C++17 onwards
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                                            ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator*=(const LongInteger&)’:
+LongInteger.cpp:299:25: error: ‘convertByteListToIntList’ was not declared in this scope
+  299 |     List<int> number1 = convertByteListToIntList(this->digits);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~
+LongInteger.cpp:337:41: error: no matching function for call to ‘List<int>::List(std::string)’
+  337 |     List<int> result(std::to_string(res));
+      |                                         ^
+List.cpp:21:1: note: candidate: ‘List<T>::List(const List<T>&) [with T = int]’
+   21 | List<T>::List(const List<T> &other)
+      | ^~~~~~~
+List.cpp:21:30: note:   no known conversion for argument 1 from ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘const List<int>&’
+   21 | List<T>::List(const List<T> &other)
+      |               ~~~~~~~~~~~~~~~^~~~~
+List.cpp:7:1: note: candidate: ‘List<T>::List(int) [with T = int]’
+    7 | List<T>::List(int size) {
+      | ^~~~~~~
+List.cpp:7:19: note:   no known conversion for argument 1 from ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘int’
+    7 | List<T>::List(int size) {
+      |               ~~~~^~~~
+List.cpp:4:1: note: candidate: ‘List<T>::List() [with T = int]’
+    4 | List<T>::List() : head(nullptr), tail(nullptr), size(0) {}
+      | ^~~~~~~
+List.cpp:4:1: note:   candidate expects 0 arguments, 1 provided
+LongInteger.cpp: In member function ‘void LongInteger::make_equal_length(LongInteger&, LongInteger&)’:
+LongInteger.cpp:350:38: error: request for member ‘getSize’ in ‘number1.LongInteger::digits’, which is of non-class type ‘int’
+  350 |     int diff_length = number1.digits.getSize() - number2.digits.getSize();
+      |                                      ^~~~~~~
+LongInteger.cpp:350:65: error: request for member ‘getSize’ in ‘number2.LongInteger::digits’, which is of non-class type ‘int’
+  350 |     int diff_length = number1.digits.getSize() - number2.digits.getSize();
+      |                                                                 ^~~~~~~
+LongInteger.cpp:356:28: error: request for member ‘insertFront’ in ‘number2.LongInteger::digits’, which is of non-class type ‘int’
+  356 |             number2.digits.insertFront((std::byte)0);
+      |                            ^~~~~~~~~~~
+LongInteger.cpp:356:46: error: ‘byte’ is not a member of ‘std’
+  356 |             number2.digits.insertFront((std::byte)0);
+      |                                              ^~~~
+LongInteger.cpp:356:46: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:363:28: error: request for member ‘insertFront’ in ‘number1.LongInteger::digits’, which is of non-class type ‘int’
+  363 |             number1.digits.insertFront((std::byte)0);
+      |                            ^~~~~~~~~~~
+LongInteger.cpp:363:46: error: ‘byte’ is not a member of ‘std’
+  363 |             number1.digits.insertFront((std::byte)0);
+      |                                              ^~~~
+LongInteger.cpp:363:46: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:388:47: error: ‘byte’ is not a member of ‘std’
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                               ^~~~
+LongInteger.cpp:388:47: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:47: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:388:47: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:51: error: template argument 1 is invalid
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                   ^
+LongInteger.cpp:388:73: error: ‘byte’ is not a member of ‘std’
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                                         ^~~~
+LongInteger.cpp:388:73: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:73: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:388:73: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:77: error: template argument 1 is invalid
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                                             ^
+LongInteger.cpp: In member function ‘void LongInteger::make_equal_length(int&, int&)’:
+LongInteger.cpp:390:31: error: request for member ‘getSize’ in ‘number1’, which is of non-class type ‘int’
+  390 |     int diff_length = number1.getSize() - number2.getSize();
+      |                               ^~~~~~~
+LongInteger.cpp:390:51: error: request for member ‘getSize’ in ‘number2’, which is of non-class type ‘int’
+  390 |     int diff_length = number1.getSize() - number2.getSize();
+      |                                                   ^~~~~~~
+LongInteger.cpp:396:21: error: request for member ‘insertFront’ in ‘number2’, which is of non-class type ‘int’
+  396 |             number2.insertFront((std::byte)0);
+      |                     ^~~~~~~~~~~
+LongInteger.cpp:396:39: error: ‘byte’ is not a member of ‘std’
+  396 |             number2.insertFront((std::byte)0);
+      |                                       ^~~~
+LongInteger.cpp:396:39: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:403:21: error: request for member ‘insertFront’ in ‘number1’, which is of non-class type ‘int’
+  403 |             number1.insertFront((std::byte)0);
+      |                     ^~~~~~~~~~~
+LongInteger.cpp:403:39: error: ‘byte’ is not a member of ‘std’
+  403 |             number1.insertFront((std::byte)0);
+      |                                       ^~~~
+LongInteger.cpp:403:39: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:408:50: error: ‘byte’ is not a member of ‘std’
+  408 | void LongInteger::remove_heading_zeros(List<std::byte> &result)
+      |                                                  ^~~~
+LongInteger.cpp:408:50: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:408:50: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:408:50: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:408:54: error: template argument 1 is invalid
+  408 | void LongInteger::remove_heading_zeros(List<std::byte> &result)
+      |                                                      ^
+LongInteger.cpp: In member function ‘void LongInteger::remove_heading_zeros(int&)’:
+LongInteger.cpp:410:22: error: request for member ‘begin’ in ‘result’, which is of non-class type ‘int’
+  410 |     auto it = result.begin();
+      |                      ^~~~~
+LongInteger.cpp:411:25: error: request for member ‘end’ in ‘result’, which is of non-class type ‘int’
+  411 |     while (it != result.end())
+      |                         ^~~
+LongInteger.cpp:413:37: error: ‘byte’ in namespace ‘std’ does not name a type
+  413 |         if (*it == static_cast<std::byte>(0))
+      |                                     ^~~~
+LongInteger.cpp:413:32: note: ‘std::byte’ is only available from C++17 onwards
+  413 |         if (*it == static_cast<std::byte>(0))
+      |                                ^~~
+LongInteger.cpp:415:20: error: request for member ‘popFront’ in ‘result’, which is of non-class type ‘int’
+  415 |             result.popFront();
+      |                    ^~~~~~~~
+LongInteger.cpp:424:16: error: request for member ‘isEmpty’ in ‘result’, which is of non-class type ‘int’
+  424 |     if (result.isEmpty())
+      |                ^~~~~~~
+LongInteger.cpp:427:16: error: request for member ‘insertBack’ in ‘result’, which is of non-class type ‘int’
+  427 |         result.insertBack((std::byte)0);
+      |                ^~~~~~~~~~
+LongInteger.cpp:427:33: error: ‘byte’ is not a member of ‘std’
+  427 |         result.insertBack((std::byte)0);
+      |                                 ^~~~
+LongInteger.cpp:427:33: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:454:52: error: ‘byte’ is not a member of ‘std’
+  454 | List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+      |                                                    ^~~~
+LongInteger.cpp:454:52: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:454:52: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:454:52: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:454:56: error: template argument 1 is invalid
+  454 | List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+      |                                                        ^
+LongInteger.cpp: In function ‘List<int> convertByteListToIntList(const int&)’:
+LongInteger.cpp:455:32: error: request for member ‘getSize’ in ‘byteList’, which is of non-class type ‘const int’
+  455 |     List<int> intList(byteList.getSize());
+      |                                ^~~~~~~
+LongInteger.cpp:457:10: error: ‘transform’ is not a member of ‘std’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |          ^~~~~~~~~
+LongInteger.cpp:457:29: error: request for member ‘begin’ in ‘byteList’, which is of non-class type ‘const int’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                             ^~~~~
+LongInteger.cpp:457:47: error: request for member ‘end’ in ‘byteList’, which is of non-class type ‘const int’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                               ^~~
+LongInteger.cpp:457:79: error: ‘std::byte’ has not been declared
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                                                               ^~~~
+LongInteger.cpp: At global scope:
+LongInteger.cpp:463:11: error: ‘byte’ is not a member of ‘std’
+  463 | List<std::byte> convertIntListToByteList(const List<int>& intList) {
+      |           ^~~~
+LongInteger.cpp:463:11: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:463:11: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:463:11: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:463:15: error: template argument 1 is invalid
+  463 | List<std::byte> convertIntListToByteList(const List<int>& intList) {
+      |               ^
+LongInteger.cpp: In function ‘int convertIntListToByteList(const List<int>&)’:
+LongInteger.cpp:464:15: error: ‘byte’ is not a member of ‘std’
+  464 |     List<std::byte> byteList(intList.getSize());
+      |               ^~~~
+LongInteger.cpp:464:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:464:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:464:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:464:19: error: template argument 1 is invalid
+  464 |     List<std::byte> byteList(intList.getSize());
+      |                   ^
+LongInteger.cpp:466:10: error: ‘transform’ is not a member of ‘std’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |          ^~~~~~~~~
+LongInteger.cpp:466:29: error: request for member ‘begin’ in ‘byteList’, which is of non-class type ‘int’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                             ^~~~~
+LongInteger.cpp:466:47: error: request for member ‘end’ in ‘byteList’, which is of non-class type ‘int’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                               ^~~
+LongInteger.cpp:466:79: error: ‘std::byte’ has not been declared
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                                                               ^~~~
+In file included from LongInteger.cpp:1,
+                 from main.cpp:3:
+LongInteger.h:6:15: error: ‘byte’ is not a member of ‘std’
+    6 |     List<std::byte> digits;
+      |               ^~~~
+LongInteger.h:6:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:6:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:6:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:6:19: error: template argument 1 is invalid
+    6 |     List<std::byte> digits;
+      |                   ^
+LongInteger.h:13:27: error: ‘byte’ is not a member of ‘std’
+   13 |     LongInteger(List<std::byte> digits, bool is_negative);
+      |                           ^~~~
+LongInteger.h:13:27: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:13:27: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:13:27: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:13:31: error: template argument 1 is invalid
+   13 |     LongInteger(List<std::byte> digits, bool is_negative);
+      |                               ^
+LongInteger.h:57:38: error: ‘byte’ is not a member of ‘std’
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                      ^~~~
+LongInteger.h:57:38: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:38: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:57:38: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:42: error: template argument 1 is invalid
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                          ^
+LongInteger.h:57:58: error: ‘byte’ is not a member of ‘std’
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                                          ^~~~
+LongInteger.h:57:58: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:58: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:57:58: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:57:62: error: template argument 1 is invalid
+   57 |     void make_equal_length(List<std::byte>& a, List<std::byte>& b);
+      |                                                              ^
+LongInteger.h:58:41: error: ‘byte’ is not a member of ‘std’
+   58 |     void remove_heading_zeros(List<std::byte> &result);
+      |                                         ^~~~
+LongInteger.h:58:41: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:58:41: error: ‘byte’ is not a member of ‘std’
+LongInteger.h:58:41: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:58:45: error: template argument 1 is invalid
+   58 |     void remove_heading_zeros(List<std::byte> &result);
+      |                                             ^
+LongInteger.h: In member function ‘void LongInteger::foo(LongInteger&)’:
+LongInteger.h:47:19: error: ‘byte’ is not a member of ‘std’
+   47 |         for (std::byte num : digits) {
+      |                   ^~~~
+LongInteger.h:47:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.h:51:5: error: expected primary-expression before ‘}’ token
+   51 |     }
+      |     ^
+LongInteger.h:51:5: error: expected ‘)’ before ‘}’ token
+LongInteger.h:47:13: note: to match this ‘(’
+   47 |         for (std::byte num : digits) {
+      |             ^
+LongInteger.h:51:5: error: expected primary-expression before ‘}’ token
+   51 |     }
+      |     ^
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger()’:
+LongInteger.cpp:7:12: error: request for member ‘insertBack’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+    7 |     digits.insertBack((std::byte)0);
+      |            ^~~~~~~~~~
+LongInteger.cpp:7:29: error: ‘byte’ is not a member of ‘std’
+    7 |     digits.insertBack((std::byte)0);
+      |                             ^~~~
+LongInteger.cpp:7:29: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger(long long int)’:
+LongInteger.cpp:22:16: error: request for member ‘insertBack’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   22 |         digits.insertBack((std::byte)0);
+      |                ^~~~~~~~~~
+LongInteger.cpp:22:33: error: ‘byte’ is not a member of ‘std’
+   22 |         digits.insertBack((std::byte)0);
+      |                                 ^~~~
+LongInteger.cpp:22:33: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:27:16: error: request for member ‘insertFront’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   27 |         digits.insertFront((std::byte)(num % 10));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:27:34: error: ‘byte’ is not a member of ‘std’
+   27 |         digits.insertFront((std::byte)(num % 10));
+      |                                  ^~~~
+LongInteger.cpp:27:34: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: In constructor ‘LongInteger::LongInteger(const std::string&)’:
+LongInteger.cpp:49:16: error: request for member ‘insertFront’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   49 |         digits.insertFront((std::byte)(num[i] - '0'));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:49:34: error: ‘byte’ is not a member of ‘std’
+   49 |         digits.insertFront((std::byte)(num[i] - '0'));
+      |                                  ^~~~
+LongInteger.cpp:49:34: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:55:36: error: ‘byte’ is not a member of ‘std’
+   55 | LongInteger::LongInteger(List<std::byte> digits, bool is_negative)
+      |                                    ^~~~
+LongInteger.cpp:55:36: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:55:36: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:55:36: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:55:40: error: template argument 1 is invalid
+   55 | LongInteger::LongInteger(List<std::byte> digits, bool is_negative)
+      |                                        ^
+LongInteger.cpp: In destructor ‘LongInteger::~LongInteger()’:
+LongInteger.cpp:63:12: error: request for member ‘clear’ in ‘((LongInteger*)this)->LongInteger::digits’, which is of non-class type ‘int’
+   63 |     digits.clear();
+      |            ^~~~~
+LongInteger.cpp: In function ‘std::ostream& operator<<(std::ostream&, const LongInteger&)’:
+LongInteger.cpp:94:27: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
+   94 |     for (auto digit : obj.digits)
+      |                           ^~~~~~
+      |                           std::begin
+In file included from /usr/include/c++/13/string:53,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from main.cpp:1:
+/usr/include/c++/13/bits/range_access.h:95:5: note: ‘std::begin’ declared here
+   95 |     begin(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~~~
+LongInteger.cpp:94:27: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
+   94 |     for (auto digit : obj.digits)
+      |                           ^~~~~~
+      |                           std::end
+/usr/include/c++/13/bits/range_access.h:106:5: note: ‘std::end’ declared here
+  106 |     end(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator+=(const LongInteger&)’:
+LongInteger.cpp:140:15: error: ‘byte’ is not a member of ‘std’
+  140 |     List<std::byte> result;
+      |               ^~~~
+LongInteger.cpp:140:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:140:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:140:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:140:19: error: template argument 1 is invalid
+  140 |     List<std::byte> result;
+      |                   ^
+LongInteger.cpp:142:15: error: ‘byte’ is not a member of ‘std’
+  142 |     for (std::byte digit : this->digits)
+      |               ^~~~
+LongInteger.cpp:142:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:147:5: error: expected primary-expression before ‘for’
+  147 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:145:6: error: expected ‘;’ before ‘for’
+  145 |     }
+      |      ^
+      |      ;
+  146 | 
+  147 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:147:5: error: expected primary-expression before ‘for’
+  147 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:145:6: error: expected ‘)’ before ‘for’
+  145 |     }
+      |      ^
+      |      )
+  146 | 
+  147 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:142:9: note: to match this ‘(’
+  142 |     for (std::byte digit : this->digits)
+      |         ^
+LongInteger.cpp:147:15: error: ‘byte’ is not a member of ‘std’
+  147 |     for (std::byte digit : num.digits)
+      |               ^~~~
+LongInteger.cpp:147:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:153:40: error: expected ‘)’ before ‘;’ token
+  153 |     make_equal_length(number1, number2);
+      |                                        ^
+      |                                        )
+LongInteger.cpp:147:9: note: to match this ‘(’
+  147 |     for (std::byte digit : num.digits)
+      |         ^
+LongInteger.cpp:160:37: error: ‘carry’ was not declared in this scope
+  160 |         int sum = (*it1) + (*it2) + carry;
+      |                                     ^~~~~
+LongInteger.cpp:165:16: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:165:45: error: ‘byte’ in namespace ‘std’ does not name a type
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                                             ^~~~
+LongInteger.cpp:165:40: note: ‘std::byte’ is only available from C++17 onwards
+  165 |         result.insertFront(static_cast<std::byte>(sum));
+      |                                        ^~~
+LongInteger.cpp:171:9: error: ‘carry’ was not declared in this scope
+  171 |     if (carry > 0)
+      |         ^~~~~
+LongInteger.cpp:173:16: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                ^~~~~~~~~~~
+LongInteger.cpp:173:45: error: ‘byte’ in namespace ‘std’ does not name a type
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                                             ^~~~
+LongInteger.cpp:173:40: note: ‘std::byte’ is only available from C++17 onwards
+  173 |         result.insertFront(static_cast<std::byte>(carry));
+      |                                        ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator-=(const LongInteger&)’:
+LongInteger.cpp:200:15: error: ‘byte’ is not a member of ‘std’
+  200 |     for (std::byte digit : this->digits)
+      |               ^~~~
+LongInteger.cpp:200:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:205:5: error: expected primary-expression before ‘for’
+  205 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:203:6: error: expected ‘;’ before ‘for’
+  203 |     }
+      |      ^
+      |      ;
+  204 | 
+  205 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:205:5: error: expected primary-expression before ‘for’
+  205 |     for (std::byte digit : num.digits)
+      |     ^~~
+LongInteger.cpp:203:6: error: expected ‘)’ before ‘for’
+  203 |     }
+      |      ^
+      |      )
+  204 | 
+  205 |     for (std::byte digit : num.digits)
+      |     ~~~
+LongInteger.cpp:200:9: note: to match this ‘(’
+  200 |     for (std::byte digit : this->digits)
+      |         ^
+LongInteger.cpp:205:15: error: ‘byte’ is not a member of ‘std’
+  205 |     for (std::byte digit : num.digits)
+      |               ^~~~
+LongInteger.cpp:205:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:210:22: error: could not convert ‘((LongInteger*)this)->LongInteger::make_equal_length(number1, number2)’ from ‘void’ to ‘bool’
+  210 |     make_equal_length(number1, number2);
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+      |                      |
+      |                      void
+LongInteger.cpp:212:5: error: expected primary-expression before ‘bool’
+  212 |     bool is_numbers_equal = true;
+      |     ^~~~
+LongInteger.cpp:210:41: error: expected ‘)’ before ‘bool’
+  210 |     make_equal_length(number1, number2);
+      |                                         ^
+      |                                         )
+  211 | 
+  212 |     bool is_numbers_equal = true;
+      |     ~~~~                                 
+LongInteger.cpp:205:9: note: to match this ‘(’
+  205 |     for (std::byte digit : num.digits)
+      |         ^
+LongInteger.cpp:221:13: error: ‘is_numbers_equal’ was not declared in this scope
+  221 |             is_numbers_equal = false;
+      |             ^~~~~~~~~~~~~~~~
+LongInteger.cpp:227:13: error: ‘is_numbers_equal’ was not declared in this scope
+  227 |             is_numbers_equal = false;
+      |             ^~~~~~~~~~~~~~~~
+LongInteger.cpp:236:9: error: ‘is_numbers_equal’ was not declared in this scope
+  236 |     if (is_numbers_equal)
+      |         ^~~~~~~~~~~~~~~~
+LongInteger.cpp:239:19: error: ‘byte’ is not a member of ‘std’
+  239 |         List<std::byte> res;
+      |                   ^~~~
+LongInteger.cpp:239:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:239:19: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:239:19: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:239:23: error: template argument 1 is invalid
+  239 |         List<std::byte> res;
+      |                       ^
+LongInteger.cpp:240:13: error: request for member ‘insertBack’ in ‘res’, which is of non-class type ‘int’
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |             ^~~~~~~~~~
+LongInteger.cpp:240:41: error: ‘byte’ in namespace ‘std’ does not name a type
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |                                         ^~~~
+LongInteger.cpp:240:36: note: ‘std::byte’ is only available from C++17 onwards
+  240 |         res.insertBack(static_cast<std::byte>(0));
+      |                                    ^~~
+LongInteger.cpp:247:15: error: ‘byte’ is not a member of ‘std’
+  247 |     List<std::byte> result;
+      |               ^~~~
+LongInteger.cpp:247:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:247:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:247:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:247:19: error: template argument 1 is invalid
+  247 |     List<std::byte> result;
+      |                   ^
+LongInteger.cpp:265:20: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                    ^~~~~~~~~~~
+LongInteger.cpp:265:49: error: ‘byte’ in namespace ‘std’ does not name a type
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                                                 ^~~~
+LongInteger.cpp:265:44: note: ‘std::byte’ is only available from C++17 onwards
+  265 |             result.insertFront(static_cast<std::byte>(r));
+      |                                            ^~~
+LongInteger.cpp:287:20: error: request for member ‘insertFront’ in ‘result’, which is of non-class type ‘int’
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                    ^~~~~~~~~~~
+LongInteger.cpp:287:49: error: ‘byte’ in namespace ‘std’ does not name a type
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                                                 ^~~~
+LongInteger.cpp:287:44: note: ‘std::byte’ is only available from C++17 onwards
+  287 |             result.insertFront(static_cast<std::byte>(r));
+      |                                            ^~~
+LongInteger.cpp: In member function ‘LongInteger& LongInteger::operator*=(const LongInteger&)’:
+LongInteger.cpp:299:25: error: ‘convertByteListToIntList’ was not declared in this scope
+  299 |     List<int> number1 = convertByteListToIntList(this->digits);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~
+LongInteger.cpp:337:41: error: no matching function for call to ‘List<int>::List(std::string)’
+  337 |     List<int> result(std::to_string(res));
+      |                                         ^
+In file included from LongInteger.h:2:
+List.cpp:21:1: note: candidate: ‘List<T>::List(const List<T>&) [with T = int]’
+   21 | List<T>::List(const List<T> &other)
+      | ^~~~~~~
+List.cpp:21:30: note:   no known conversion for argument 1 from ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘const List<int>&’
+   21 | List<T>::List(const List<T> &other)
+      |               ~~~~~~~~~~~~~~~^~~~~
+List.cpp:7:1: note: candidate: ‘List<T>::List(int) [with T = int]’
+    7 | List<T>::List(int size) {
+      | ^~~~~~~
+List.cpp:7:19: note:   no known conversion for argument 1 from ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘int’
+    7 | List<T>::List(int size) {
+      |               ~~~~^~~~
+List.cpp:4:1: note: candidate: ‘List<T>::List() [with T = int]’
+    4 | List<T>::List() : head(nullptr), tail(nullptr), size(0) {}
+      | ^~~~~~~
+List.cpp:4:1: note:   candidate expects 0 arguments, 1 provided
+LongInteger.cpp: In member function ‘void LongInteger::make_equal_length(LongInteger&, LongInteger&)’:
+LongInteger.cpp:350:38: error: request for member ‘getSize’ in ‘number1.LongInteger::digits’, which is of non-class type ‘int’
+  350 |     int diff_length = number1.digits.getSize() - number2.digits.getSize();
+      |                                      ^~~~~~~
+LongInteger.cpp:350:65: error: request for member ‘getSize’ in ‘number2.LongInteger::digits’, which is of non-class type ‘int’
+  350 |     int diff_length = number1.digits.getSize() - number2.digits.getSize();
+      |                                                                 ^~~~~~~
+LongInteger.cpp:356:28: error: request for member ‘insertFront’ in ‘number2.LongInteger::digits’, which is of non-class type ‘int’
+  356 |             number2.digits.insertFront((std::byte)0);
+      |                            ^~~~~~~~~~~
+LongInteger.cpp:356:46: error: ‘byte’ is not a member of ‘std’
+  356 |             number2.digits.insertFront((std::byte)0);
+      |                                              ^~~~
+LongInteger.cpp:356:46: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:363:28: error: request for member ‘insertFront’ in ‘number1.LongInteger::digits’, which is of non-class type ‘int’
+  363 |             number1.digits.insertFront((std::byte)0);
+      |                            ^~~~~~~~~~~
+LongInteger.cpp:363:46: error: ‘byte’ is not a member of ‘std’
+  363 |             number1.digits.insertFront((std::byte)0);
+      |                                              ^~~~
+LongInteger.cpp:363:46: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:388:47: error: ‘byte’ is not a member of ‘std’
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                               ^~~~
+LongInteger.cpp:388:47: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:47: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:388:47: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:51: error: template argument 1 is invalid
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                   ^
+LongInteger.cpp:388:73: error: ‘byte’ is not a member of ‘std’
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                                         ^~~~
+LongInteger.cpp:388:73: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:73: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:388:73: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:388:77: error: template argument 1 is invalid
+  388 | void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+      |                                                                             ^
+LongInteger.cpp: In member function ‘void LongInteger::make_equal_length(int&, int&)’:
+LongInteger.cpp:390:31: error: request for member ‘getSize’ in ‘number1’, which is of non-class type ‘int’
+  390 |     int diff_length = number1.getSize() - number2.getSize();
+      |                               ^~~~~~~
+LongInteger.cpp:390:51: error: request for member ‘getSize’ in ‘number2’, which is of non-class type ‘int’
+  390 |     int diff_length = number1.getSize() - number2.getSize();
+      |                                                   ^~~~~~~
+LongInteger.cpp:396:21: error: request for member ‘insertFront’ in ‘number2’, which is of non-class type ‘int’
+  396 |             number2.insertFront((std::byte)0);
+      |                     ^~~~~~~~~~~
+LongInteger.cpp:396:39: error: ‘byte’ is not a member of ‘std’
+  396 |             number2.insertFront((std::byte)0);
+      |                                       ^~~~
+LongInteger.cpp:396:39: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:403:21: error: request for member ‘insertFront’ in ‘number1’, which is of non-class type ‘int’
+  403 |             number1.insertFront((std::byte)0);
+      |                     ^~~~~~~~~~~
+LongInteger.cpp:403:39: error: ‘byte’ is not a member of ‘std’
+  403 |             number1.insertFront((std::byte)0);
+      |                                       ^~~~
+LongInteger.cpp:403:39: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:408:50: error: ‘byte’ is not a member of ‘std’
+  408 | void LongInteger::remove_heading_zeros(List<std::byte> &result)
+      |                                                  ^~~~
+LongInteger.cpp:408:50: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:408:50: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:408:50: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:408:54: error: template argument 1 is invalid
+  408 | void LongInteger::remove_heading_zeros(List<std::byte> &result)
+      |                                                      ^
+LongInteger.cpp: In member function ‘void LongInteger::remove_heading_zeros(int&)’:
+LongInteger.cpp:410:22: error: request for member ‘begin’ in ‘result’, which is of non-class type ‘int’
+  410 |     auto it = result.begin();
+      |                      ^~~~~
+LongInteger.cpp:411:25: error: request for member ‘end’ in ‘result’, which is of non-class type ‘int’
+  411 |     while (it != result.end())
+      |                         ^~~
+LongInteger.cpp:413:37: error: ‘byte’ in namespace ‘std’ does not name a type
+  413 |         if (*it == static_cast<std::byte>(0))
+      |                                     ^~~~
+LongInteger.cpp:413:32: note: ‘std::byte’ is only available from C++17 onwards
+  413 |         if (*it == static_cast<std::byte>(0))
+      |                                ^~~
+LongInteger.cpp:415:20: error: request for member ‘popFront’ in ‘result’, which is of non-class type ‘int’
+  415 |             result.popFront();
+      |                    ^~~~~~~~
+LongInteger.cpp:424:16: error: request for member ‘isEmpty’ in ‘result’, which is of non-class type ‘int’
+  424 |     if (result.isEmpty())
+      |                ^~~~~~~
+LongInteger.cpp:427:16: error: request for member ‘insertBack’ in ‘result’, which is of non-class type ‘int’
+  427 |         result.insertBack((std::byte)0);
+      |                ^~~~~~~~~~
+LongInteger.cpp:427:33: error: ‘byte’ is not a member of ‘std’
+  427 |         result.insertBack((std::byte)0);
+      |                                 ^~~~
+LongInteger.cpp:427:33: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp: At global scope:
+LongInteger.cpp:454:52: error: ‘byte’ is not a member of ‘std’
+  454 | List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+      |                                                    ^~~~
+LongInteger.cpp:454:52: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:454:52: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:454:52: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:454:56: error: template argument 1 is invalid
+  454 | List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+      |                                                        ^
+LongInteger.cpp: In function ‘List<int> convertByteListToIntList(const int&)’:
+LongInteger.cpp:455:32: error: request for member ‘getSize’ in ‘byteList’, which is of non-class type ‘const int’
+  455 |     List<int> intList(byteList.getSize());
+      |                                ^~~~~~~
+LongInteger.cpp:457:10: error: ‘transform’ is not a member of ‘std’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |          ^~~~~~~~~
+LongInteger.cpp:457:29: error: request for member ‘begin’ in ‘byteList’, which is of non-class type ‘const int’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                             ^~~~~
+LongInteger.cpp:457:47: error: request for member ‘end’ in ‘byteList’, which is of non-class type ‘const int’
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                               ^~~
+LongInteger.cpp:457:79: error: ‘std::byte’ has not been declared
+  457 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                                                               ^~~~
+LongInteger.cpp: At global scope:
+LongInteger.cpp:463:11: error: ‘byte’ is not a member of ‘std’
+  463 | List<std::byte> convertIntListToByteList(const List<int>& intList) {
+      |           ^~~~
+LongInteger.cpp:463:11: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:463:11: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:463:11: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:463:15: error: template argument 1 is invalid
+  463 | List<std::byte> convertIntListToByteList(const List<int>& intList) {
+      |               ^
+LongInteger.cpp: In function ‘int convertIntListToByteList(const List<int>&)’:
+LongInteger.cpp:464:15: error: ‘byte’ is not a member of ‘std’
+  464 |     List<std::byte> byteList(intList.getSize());
+      |               ^~~~
+LongInteger.cpp:464:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:464:15: error: ‘byte’ is not a member of ‘std’
+LongInteger.cpp:464:15: note: ‘std::byte’ is only available from C++17 onwards
+LongInteger.cpp:464:19: error: template argument 1 is invalid
+  464 |     List<std::byte> byteList(intList.getSize());
+      |                   ^
+LongInteger.cpp:466:10: error: ‘transform’ is not a member of ‘std’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |          ^~~~~~~~~
+LongInteger.cpp:466:29: error: request for member ‘begin’ in ‘byteList’, which is of non-class type ‘int’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                             ^~~~~
+LongInteger.cpp:466:47: error: request for member ‘end’ in ‘byteList’, which is of non-class type ‘int’
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                               ^~~
+LongInteger.cpp:466:79: error: ‘std::byte’ has not been declared
+  466 |     std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+      |                                                                               ^~~~

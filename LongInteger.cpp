@@ -1,5 +1,9 @@
-#include "LongInteger.h"
+#include <algorithm>
+#include <cctype>
+#include <iomanip>
 #include <iostream>
+
+#include "LongInteger.h"
 
 LongInteger::LongInteger()
 {
@@ -34,14 +38,10 @@ LongInteger::LongInteger(std::string const &num)
     int begin_num = 0;
     is_negative = false;
 
-    if (num[0] == '-')
-    {
-        is_negative = true;
-        begin_num = 1;
-    }
-    else if (num[0] == '+')
+    if (!isdigit(num[0]))
     {
         begin_num = 1;
+        is_negative = num[0] == '-' ? true : false;
     }
 
     for (int i = num.length() - 1; i >= begin_num; i--)
@@ -62,6 +62,24 @@ LongInteger::~LongInteger()
 {
     digits.clear();
 }
+
+List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+    List<int> intList(byteList.getSize());
+    
+    std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+
+    return intList;
+}
+
+
+List<std::byte> convertIntListToByteList(const List<int>& intList) {
+    List<std::byte> byteList(intList.getSize());
+    
+    std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+
+    return byteList;
+}
+
 
 LongInteger &LongInteger::operator=(const LongInteger &other)
 {
@@ -451,21 +469,3 @@ void LongInteger::remove_heading_zeros(List<int> &result)
     }
 }
 
-List<int> convertByteListToIntList(const List<std::byte>& byteList) {
-    List<int> intList(byteList.getSize());
-    
-    std::transform(byteList.begin(), byteList.end(), intList.begin(),
-                   [](std::byte b) { return static_cast<int>(b); });
-
-    return intList;
-}
-
-
-List<std::byte> convertIntListToByteList(const List<int>& intList) {
-    List<std::byte> byteList(intList.getSize());
-    
-    std::transform(byteList.begin(), byteList.end(), intList.begin(),
-                   [](std::byte b) { return static_cast<int>(b); });
-
-    return byteList;
-}

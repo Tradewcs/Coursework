@@ -62,7 +62,7 @@ bool List<T>::isEmpty()
 }
 
 template <typename T>
-int List<T>::getSize()
+int List<T>::getSize() const
 {
     return size;
 }
