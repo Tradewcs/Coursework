@@ -4,6 +4,20 @@ template <typename T>
 List<T>::List() : head(nullptr), tail(nullptr), size(0) {}
 
 template <typename T>
+List<T>::List(int size) {
+    this->head = new Node<T>(0);
+    this->tail = this->head;
+
+    Node<T> current = this->head;
+    for(int i = 0; i < size - 1; i++) {
+        current->next = new Node<T>(0);
+        current = current.next;
+    }
+
+    this->size = size;
+}
+
+template <typename T>
 List<T>::List(const List<T> &other)
 {
     head = nullptr;

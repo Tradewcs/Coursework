@@ -20,6 +20,7 @@ private:
 
 public:
     List();
+    List(int size);
     List(const List<T> &other);
     ~List();
 

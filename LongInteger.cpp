@@ -1,4 +1,5 @@
 #include "LongInteger.h"
+#include <iostream>
 
 LongInteger::LongInteger()
 {
@@ -186,7 +187,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 
     if (is_negative && !num.is_negative)
     {
-        std::cout << "-+" << std::endl;
+        std::cout << "-" << std::endl;
         
         LongInteger tmp(num);
         tmp.is_negative = true;
@@ -295,20 +296,8 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 }
 
 LongInteger &LongInteger::operator*=(const LongInteger& other) {
-    List<int> number1;
-    List<int> number2;
-    
-    List<std::byte> result;
-
-    for (std::byte digit : this->digits)
-    {
-        number1.insertBack(static_cast<int>(digit));
-    }
-
-    for (std::byte digit : other.digits) 
-    {
-        number1.insertBack(static_cast<int>(digit));
-    }
+    List<int> number1 = convertByteListToIntList(this->digits);
+    List<int> number2 = convertByteListToIntList(other.digits);
 
     auto it1 = number1.rbegin();
     auto it2 = number2.rbegin();
@@ -317,15 +306,40 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
 
     while (it1 != number1.rend())
     {
+        int res;
+        int digit_to_insert;
+
         numbers_to_add.insertBack(0);
 
         while (it2 != number2.rend())
         {
+            res = *it1 + *it2 + res / 10;
+            digit_to_insert = res % 10;
+
+            res -= digit_to_insert;
+
+            numbers_to_add.insertBack(digit_to_insert);
 
             it2--;
         }
 
         it1--;
+    }
+
+    int res = 0;
+
+    auto it = numbers_to_add.begin();
+    while (it != numbers_to_add.end())
+    {
+        res += *it;
+    }
+
+    List<int> result(std::to_string(res));
+
+    this->is_negative = this->is_negative && other.is_negative;
+    if (!(this->is_negative || other.is_negative))
+    {
+        this->is_negative = false;
     }
 
     return *this;
@@ -435,4 +449,23 @@ void LongInteger::remove_heading_zeros(List<int> &result)
         is_negative = false;
         result.insertBack(0);
     }
+}
+
+List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+    List<int> intList(byteList.getSize());
+    
+    std::transform(byteList.begin(), byteList.end(), intList.begin(),
+                   [](std::byte b) { return static_cast<int>(b); });
+
+    return intList;
+}
+
+
+List<std::byte> convertIntListToByteList(const List<int>& intList) {
+    List<std::byte> byteList(intList.getSize());
+    
+    std::transform(byteList.begin(), byteList.end(), intList.begin(),
+                   [](std::byte b) { return static_cast<int>(b); });
+
+    return byteList;
 }
