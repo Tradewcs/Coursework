@@ -65,17 +65,36 @@ LongInteger::~LongInteger()
 
 List<int> convertByteListToIntList(const List<std::byte>& byteList) {
     List<int> intList(byteList.getSize());
-    
-    std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+
+    auto it_byte = byteList.begin();
+    auto it_int = intList.begin();
+
+    while (it_byte != byteList.end())
+    {
+        *it_int = static_cast<int>(*it_byte);
+
+        ++it_byte;
+        ++it_int;
+    }
+
 
     return intList;
 }
 
-
-List<std::byte> convertIntListToByteList(const List<int>& intList) {
+List<std::byte> convertByteListToIntList(const List<int>& intList) {
     List<std::byte> byteList(intList.getSize());
-    
-    std::transform(byteList.begin(), byteList.end(), intList.begin(), [](std::byte b) { return static_cast<int>(b); });
+
+    auto it_byte = byteList.begin();
+    auto it_int = intList.begin();
+
+    while (it_int != intList.end())
+    {
+        *it_byte = static_cast<std::byte>(*it_int);
+
+        ++it_byte;
+        ++it_int;
+    }
+
 
     return byteList;
 }
@@ -352,7 +371,7 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
         res += *it;
     }
 
-    LongInteger<int> result(std::to_string(res));
+    LongInteger result(static_cast<std::string>(std::to_string(res)));
 
     this->is_negative = this->is_negative && other.is_negative;
     if (!(this->is_negative || other.is_negative))
