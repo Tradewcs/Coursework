@@ -352,7 +352,7 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
         res += *it;
     }
 
-    List<int> result(std::to_string(res));
+    LongInteger<int> result(std::to_string(res));
 
     this->is_negative = this->is_negative && other.is_negative;
     if (!(this->is_negative || other.is_negative))
