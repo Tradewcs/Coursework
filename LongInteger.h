@@ -24,11 +24,11 @@ public:
     LongInteger operator+() const;
     LongInteger operator-() const;
 
-    LongInteger& operator-(const LongInteger& b) const;
-    LongInteger& operator+(const LongInteger& b) const;
+    LongInteger operator-(const LongInteger& b) const;
+    LongInteger operator+(const LongInteger& b) const;
 
-    LongInteger& operator*(const LongInteger& b) const;
-    LongInteger& operator/(const LongInteger& b) const;
+    LongInteger operator*(const LongInteger& b) const;
+    LongInteger operator/(const LongInteger& b) const;
     // + - * / % ++ -- 
     
     LongInteger& operator+=(const LongInteger& b);
@@ -38,6 +38,7 @@ public:
     LongInteger& operator/=(const LongInteger& b);
 
     LongInteger& operator++();
+    LongInteger operator++(int);
 
     // LongInteger& power(const LongInteger)
 

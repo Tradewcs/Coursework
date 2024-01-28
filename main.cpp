@@ -5,13 +5,17 @@
 using namespace std;
 
 int main() {
-    LongInteger a = 7;
-    LongInteger b = -7;
+    LongInteger a = 389;
+    LongInteger b = 28;
 
 
     // cout << (a - b) << endl;
 
-    cout << a * b << endl;
+    a *= b;
+
+    cout << "result of a * b = " << a << endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
     
     return 0;
 }

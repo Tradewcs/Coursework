@@ -145,7 +145,15 @@ LongInteger LongInteger::abs(const LongInteger &num)
 
 LongInteger &LongInteger::operator++()
 {
+    (*this).operator+=(LongInteger(1));
     return *this;
+}
+
+LongInteger LongInteger::operator++(int)
+{
+    LongInteger tmp = *this;
+    ++(*this);
+    return tmp;
 }
 
 LongInteger &LongInteger::operator+=(const LongInteger &num)
@@ -332,28 +340,47 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
     return *this;
 }
 
+// remove this sheet
+template <typename T>
+void printList(List<T> lst)
+{
+    for (auto item : lst)
+    {
+        std::cout << item << " ";
+    }
+    std::cout << std::endl;
+}
+
+
+///===========================================================================================================
+
 LongInteger &LongInteger::operator*=(const LongInteger& other) {
     List<int> number1 = convertByteListToIntList(this->digits);
     List<int> number2 = convertByteListToIntList(other.digits);
 
-    auto it1 = number1.rbegin();
-    auto it2 = number2.rbegin();
+    std::cout << "number2: ";
+    printList<int>(number2);
 
     List<int> numbers_to_add;
 
+    auto it1 = number1.rbegin();
     while (it1 != number1.rend())
     {
-        int res;
-        int digit_to_insert;
+        int res = 0;
+        int digit_to_insert = 0;
 
-        numbers_to_add.insertBack(0);
-
+        auto it2 = number2.rbegin();
         while (it2 != number2.rend())
         {
-            res = *it1 + *it2 + res / 10;
+            std::cout << (*it2) << std::endl;
+            res = (*it1) * (*it2) + (res / 10);
+            std::cout << res;
             digit_to_insert = res % 10;
 
-            res -= digit_to_insert;
+            std::cout << digit_to_insert << "|";
+            std::cout << std::endl;
+
+            // res -= digit_to_insert;
 
             numbers_to_add.insertBack(digit_to_insert);
 
@@ -362,22 +389,38 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
 
         it1--;
     }
-
-    int res = 0;
+    
+    int sum = 0;
 
     auto it = numbers_to_add.begin();
+    int power = 1;
     while (it != numbers_to_add.end())
     {
-        res += *it;
+        std::cout << *it << std::endl;
+        sum += (*it) * power;
+        power *= 10;
+
+        ++it;
     }
 
-    LongInteger result(static_cast<std::string>(std::to_string(res)));
+    LongInteger result(static_cast<std::string>(std::to_string(sum)));
+    printList<int>(convertByteListToIntList(result.digits));
 
     this->is_negative = this->is_negative && other.is_negative;
     if (!(this->is_negative || other.is_negative))
     {
         this->is_negative = false;
     }
+
+    (*this).digits = result.digits;
+    (this)->is_negative = result.is_negative;
+
+    return *this;
+}
+
+LongInteger LongInteger::operator*(const LongInteger& b) const
+{
+    
 
     return *this;
 }

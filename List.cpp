@@ -5,14 +5,17 @@ List<T>::List() : head(nullptr), tail(nullptr), size(0) {}
 
 template <typename T>
 List<T>::List(int size) {
-    this->head = new Node<T>(0);
-    this->tail = this->head;
+    std::cout << "List constructor for " << size << " elements" << std::endl;
+
+    this->head = new Node<T>(T());
 
     Node<T> *current = this->head;
     for(int i = 0; i < size - 1; i++) {
-        current->next = new Node<T>(0);
+        current->next = new Node<T>(T());
         current = current->next;
     }
+
+    this->tail = current;
 
     this->size = size;
 }
