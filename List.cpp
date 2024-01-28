@@ -5,19 +5,13 @@ List<T>::List() : head(nullptr), tail(nullptr), size(0) {}
 
 template <typename T>
 List<T>::List(int size) {
-    std::cout << "List constructor for " << size << " elements" << std::endl;
-
-    this->head = new Node<T>(T());
-
-    Node<T> *current = this->head;
-    for(int i = 0; i < size - 1; i++) {
-        current->next = new Node<T>(T());
-        current = current->next;
+    this->head = nullptr;
+    this->size = 0;
+    
+    for (int i = 0; i < size; ++i)
+    {
+        insertBack(T());
     }
-
-    this->tail = current;
-
-    this->size = size;
 }
 
 template <typename T>

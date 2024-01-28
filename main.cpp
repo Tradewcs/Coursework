@@ -5,11 +5,9 @@
 using namespace std;
 
 int main() {
+    // LongInteger a = 389;
     LongInteger a = 389;
     LongInteger b = 28;
-
-
-    // cout << (a - b) << endl;
 
     a *= b;
 
