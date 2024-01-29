@@ -15,6 +15,8 @@ public:
 
     ~LongInteger();
 
+    bool isNegative() const;
+
     LongInteger& operator=(const LongInteger& other);
 
     static LongInteger abs(const LongInteger& num);
