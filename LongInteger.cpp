@@ -8,57 +8,74 @@
 LongInteger::LongInteger()
 {
     is_negative = false;
-    digits.insertBack((std::byte)0);
+    digits.insertBack(static_cast<u_int16_t>(0));
 }
 
 LongInteger::LongInteger(long long num)
 {
-    is_negative = false;
+    if (num == 0)
+    {
+        digits.insertBack(0);
+        is_negative = false;
+        return;
+    }
 
+    is_negative = false;
     if (num < 0)
     {
         is_negative = true;
         num = -num;
     }
 
-    if (num == 0)
+    while (num > 0)
     {
-        digits.insertBack((std::byte)0);
-    }
+        u_int16_t val = num % 10000;
+        digits.insertFront(val);
 
-    while (num)
-    {
-        digits.insertFront((std::byte)(num % 10));
-        num /= 10;
+        num /= 10000;
     }
 }
 
-LongInteger::LongInteger(std::string const &num)
+LongInteger::LongInteger(std::string const &str_num)
 {
-    int begin_num = 0;
-    is_negative = false;
+    std::string num = str_num;
+    
+    if (num.empty())
+    {
+        LongInteger(0);
+        return;
+    }
 
     if (!isdigit(num[0]))
     {
-        begin_num = 1;
-        is_negative = num[0] == '-' ? true : false;
+        if (num[0] == '-')
+        {
+            this->is_negative = true;
+        }
+        else
+        {
+            this->is_negative = false;
+        }
     }
 
-    int power = 0;
-    for (int i = num.length() - 1; i >= begin_num; i -= 4)
-    {
-        if (i >= 4)
-        {
-            
+    num.erase(num.begin());
+
+    for (int i = num.size() - 1; i >= 0; i -= 4) {
+        int value = 0;
+        int multiplier = 1;
+
+        for (int j = 0; j < 4 && i - j >= 0; ++j) {
+            value += (num[i - j] - '0') * multiplier;
+            multiplier *= 10;
         }
 
-        digits.insertFront((std::byte)(num[i] - '0'));
+        digits.insertFront(value);
     }
 }
 
 LongInteger::LongInteger(const LongInteger &other) : is_negative(other.is_negative), digits(other.digits) {}
 
-LongInteger::LongInteger(List<std::byte> digits, bool is_negative)
+LongInteger::LongInteger(List<u_int16_t> digits, bool is_negative)
 {
     this->digits = digits;
     this->is_negative = is_negative;
@@ -74,7 +91,7 @@ bool LongInteger::isNegative() const
     return is_negative;
 }
 
-List<int> convertByteListToIntList(const List<std::byte>& byteList) {
+List<int> convertByteListToIntList(const List<u_int16_t>& byteList) {
     List<int> intList(byteList.getSize());
 
     auto it_byte = byteList.begin();
@@ -92,15 +109,15 @@ List<int> convertByteListToIntList(const List<std::byte>& byteList) {
     return intList;
 }
 
-List<std::byte> convertByteListToIntList(const List<int>& intList) {
-    List<std::byte> byteList(intList.getSize());
+List<u_int16_t> convertByteListToIntList(const List<int>& intList) {
+    List<u_int16_t> byteList(intList.getSize());
 
     auto it_byte = byteList.begin();
     auto it_int = intList.begin();
 
     while (it_int != intList.end())
     {
-        *it_byte = static_cast<std::byte>(*it_int);
+        *it_byte = static_cast<u_int16_t>(*it_int);
 
         ++it_byte;
         ++it_int;
@@ -134,18 +151,23 @@ LongInteger LongInteger::operator-() const {
 
 std::ostream &operator<<(std::ostream &os, const LongInteger &obj)
 {
-    if (obj.is_negative)
-    {
+    if (obj.is_negative) {
         os << '-';
     }
 
-    for (auto digit : obj.digits)
-    {
-        os << static_cast<int>(digit);
+    bool is_first_group = true;
+    for (u_int16_t group : obj.digits) {
+        if (!is_first_group) {
+            os << std::setw(4) << std::setfill('0');
+        }
+
+        os << group;
+        is_first_group = false;
     }
 
     return os;
 }
+
 
 LongInteger LongInteger::abs(const LongInteger &num)
 {
@@ -190,19 +212,10 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
         return *this;
     }
 
-    List<int> number1;
-    List<int> number2;
-    List<std::byte> result;
+    List<u_int16_t> number1 = (*this).digits;
+    List<u_int16_t> number2 = num.digits;;
 
-    for (std::byte digit : this->digits)
-    {
-        number1.insertBack(static_cast<int>(digit));
-    }
-
-    for (std::byte digit : num.digits)
-    {
-        number2.insertBack(static_cast<int>(digit));
-    }
+    List<u_int16_t> result;
 
     int carry = 0;
     make_equal_length(number1, number2);
@@ -214,10 +227,10 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
     {
         int sum = (*it1) + (*it2) + carry;
 
-        carry = sum / 10;
-        sum = sum % 10;
+        carry = sum / 10000;
+        sum = sum % 10000;
 
-        result.insertFront(static_cast<std::byte>(sum));
+        result.insertFront(static_cast<u_int16_t>(sum));
 
         --it1;
         --it2;
@@ -225,12 +238,20 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
 
     if (carry > 0)
     {
-        result.insertFront(static_cast<std::byte>(carry));
+        result.insertFront(static_cast<u_int16_t>(carry));
     }
 
     this->digits = result;
 
     return *this;
+}
+
+LongInteger LongInteger::operator+(const LongInteger &num) const
+{
+    LongInteger tmp = *this;
+    tmp += num;
+
+    return tmp;
 }
 
 LongInteger &LongInteger::operator-=(const LongInteger &num)
@@ -242,7 +263,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 
     if (is_negative && !num.is_negative)
     {
-        std::cout << "-" << std::endl;
+        // std::cout << "-" << std::endl;
         
         LongInteger tmp(num);
         tmp.is_negative = true;
@@ -252,12 +273,12 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
     List<int> number1;
     List<int> number2;
 
-    for (std::byte digit : this->digits)
+    for (u_int16_t digit : this->digits)
     {
         number1.insertBack(static_cast<int>(digit));
     }
 
-    for (std::byte digit : num.digits)
+    for (u_int16_t digit : num.digits)
     {
         number2.insertBack(static_cast<int>(digit));
     }
@@ -291,15 +312,15 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
     if (is_numbers_equal)
     {
 
-        List<std::byte> res;
-        res.insertBack(static_cast<std::byte>(0));
+        List<u_int16_t> res;
+        res.insertBack(static_cast<u_int16_t>(0));
         digits = res;
         is_negative = false;
 
         return *this;
     }
 
-    List<std::byte> result;
+    List<u_int16_t> result;
 
     if (is_number1_bigger)
     {
@@ -310,14 +331,22 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
         {
             if (*it1 < *it2)
             {
-                *it1 += 10;
-                --it1;
-                *it1 -= 1;
-                it1++;
+                *it1 += 10000;
+
+                auto it1_borrow = it1;
+                --it1_borrow;
+ 
+                while (it1_borrow != number1.rend() && *it1_borrow == 0)
+                {
+                    *it1_borrow = 9999;
+                    --it1_borrow;
+                }
+
+                *it1_borrow -= 1;
             }
 
             int r = *it1 - *it2;
-            result.insertFront(static_cast<std::byte>(r));
+            result.insertFront(static_cast<u_int16_t>(r));
 
             it1--;
             it2--;
@@ -332,15 +361,28 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
         {
             if (*it2 < *it1)
             {
-                *it2 += 10;
-                --it2;
-                *it2 -= 1;
-                it2++;
+                *it2 += 10000;
+
+                auto it2_borrow = it2;
+                --it2_borrow;
+               
+                while (it2_borrow != number1.rend() && *it2_borrow == 0)
+                {
+                    *it2_borrow = 9999;
+                    --it2_borrow;
+                }
+
+                *it2_borrow -= 1;
             }
 
             int r = *it2 - *it1;
-            result.insertFront(static_cast<std::byte>(r));
+            result.insertFront(static_cast<u_int16_t>(r));
+
+            it1--;
+            it2--;
         }
+
+        this->is_negative = true;
     }
 
     remove_heading_zeros(result);
@@ -348,6 +390,14 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
     this->digits = result;
 
     return *this;
+}
+
+LongInteger LongInteger::operator-(const LongInteger& other) const
+{
+    LongInteger tmp = *this;
+    tmp -= other;
+
+    return tmp;
 }
 
 // remove this sheet
@@ -405,7 +455,7 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
 
             // std::cout << "digit: " << digit_to_insert << " ";
 
-            result.digits.insertFront(static_cast<std::byte>(digit_to_insert));
+            result.digits.insertFront(static_cast<u_int16_t>(digit_to_insert));
 
 
             --it1;
@@ -417,7 +467,7 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
         {
             // std::cout << "res: " << res << std::endl;
 
-            result.digits.insertFront(static_cast<std::byte>(res));
+            result.digits.insertFront(static_cast<u_int16_t>(res));
         }
 
         // std::cout << "result " << result << std::endl;
@@ -434,7 +484,7 @@ LongInteger &LongInteger::operator*=(const LongInteger& other) {
     {
         for (int i = 0; i < power; ++i)
         {
-            num.digits.insertBack(static_cast<std::byte>(0));
+            num.digits.insertBack(static_cast<u_int16_t>(0));
         }
 
         sum += num;
@@ -473,14 +523,14 @@ void LongInteger::make_equal_length(LongInteger &number1, LongInteger &number2)
     {
         for (int i = 0; i < diff_length; i++)
         {
-            number2.digits.insertFront((std::byte)0);
+            number2.digits.insertFront((u_int16_t)0);
         }
     }
     else if (diff_length < 0)
     {
         for (int i = 0; i < -diff_length; i++)
         {
-            number1.digits.insertFront((std::byte)0);
+            number1.digits.insertFront((u_int16_t)0);
         }
     }
 }
@@ -505,7 +555,7 @@ void LongInteger::make_equal_length(List<int> &number1, List<int> &number2)
     }
 }
 
-void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &number2)
+void LongInteger::make_equal_length(List<u_int16_t> &number1, List<u_int16_t> &number2)
 {
     int diff_length = number1.getSize() - number2.getSize();
 
@@ -513,24 +563,24 @@ void LongInteger::make_equal_length(List<std::byte> &number1, List<std::byte> &n
     {
         for (int i = 0; i < diff_length; i++)
         {
-            number2.insertFront((std::byte)0);
+            number2.insertFront((u_int16_t)0);
         }
     }
     else if (diff_length < 0)
     {
         for (int i = 0; i < -diff_length; i++)
         {
-            number1.insertFront((std::byte)0);
+            number1.insertFront((u_int16_t)0);
         }
     }
 }
 
-void LongInteger::remove_heading_zeros(List<std::byte> &result)
+void LongInteger::remove_heading_zeros(List<u_int16_t> &result)
 {
     auto it = result.begin();
     while (it != result.end())
     {
-        if (*it == static_cast<std::byte>(0))
+        if (*it == static_cast<u_int16_t>(0))
         {
             result.popFront();
             ++it;
@@ -544,7 +594,7 @@ void LongInteger::remove_heading_zeros(List<std::byte> &result)
     if (result.isEmpty())
     {
         is_negative = false;
-        result.insertBack((std::byte)0);
+        result.insertBack((u_int16_t)0);
     }
 }
 
