@@ -6,7 +6,7 @@ class LongInteger {
 private:
     List<u_int16_t> digits;
     bool is_negative;
-    const int base;
+    static const int base = 10000;
 
 public:
     LongInteger();
