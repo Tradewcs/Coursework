@@ -22,13 +22,26 @@ int main1() {
 
 }
 
-int main()
+int main2()
 {
     LongInteger a("-51000000000000041244146780000017234546");
-    LongInteger b("-97854895768238762349867245896");
+    LongInteger b("-0");
 
 
     cout << a << " " << b << endl;
-    cout << (b - a) << endl;
+    cout << (a + b) << endl;
 
+    return 0;
+}
+
+int main()
+{
+    LongInteger a = -510;
+    LongInteger b = 510;
+
+    cout << (a != b) << endl;
+    // cout << (b < a) << endl;
+
+
+    return 0;
 }

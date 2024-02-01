@@ -43,6 +43,15 @@ public:
     LongInteger& operator++();
     LongInteger operator++(int);
 
+    bool operator<(const LongInteger& b);
+    bool operator>(const LongInteger& b);
+
+    bool operator<=(const LongInteger& b);
+    bool operator>=(const LongInteger& b);
+
+    bool operator==(const LongInteger& b);
+    bool operator!=(const LongInteger& b);
+
     // LongInteger& power(const LongInteger)
 
 private:

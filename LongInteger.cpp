@@ -382,7 +382,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
             it2--;
         }
 
-        this->is_negative = true;
+        this->is_negative = !this->is_negative;
     }
 
     remove_heading_zeros(result);
@@ -513,6 +513,116 @@ LongInteger LongInteger::operator*(const LongInteger& b) const
     tmp *= b;
 
     return tmp;
+}
+
+bool LongInteger::operator<(const LongInteger& b)
+{
+    if (this->is_negative != b.is_negative)
+    {
+        return this->is_negative;
+    }
+
+    List<u_int16_t> number1 = this->digits;
+    List<u_int16_t> number2 = b.digits;
+
+    make_equal_length(number1, number2);
+
+    bool is_numbers_equal = true;
+    bool is_number1_bigger = false;
+
+    auto it1 = number1.begin();
+    auto it2 = number2.begin();
+    while (it1 != number1.end())
+    {
+        if (*it1 > *it2)
+        {
+            is_numbers_equal = false;
+            is_number1_bigger = true;
+            break;
+        }
+        else if (*it1 < *it2)
+        {
+            is_numbers_equal = false;
+            is_number1_bigger = false;
+            break;
+        }
+
+        it1++;
+        it2++;
+    }
+
+    if (is_numbers_equal)
+    {
+        return false;
+    }
+
+    if (this->is_negative)
+    {
+        return is_number1_bigger;
+    }
+    else
+    {
+        return !is_number1_bigger;
+    }
+}
+
+bool LongInteger::operator>(const LongInteger& b)
+{
+    return !operator<=(b);
+}
+
+bool LongInteger::operator==(const LongInteger& b)
+{
+    if (this->is_negative != b.is_negative)
+    {
+        return false;
+    }
+
+    List<u_int16_t> number1 = this->digits;
+    List<u_int16_t> number2 = b.digits;
+
+    make_equal_length(number1, number2);
+
+    bool is_numbers_equal = true;
+    bool is_number1_bigger = false;
+
+    auto it1 = number1.begin();
+    auto it2 = number2.begin();
+    while (it1 != number1.end())
+    {
+        if (*it1 > *it2)
+        {
+            is_numbers_equal = false;
+            is_number1_bigger = true;
+            break;
+        }
+        else if (*it1 < *it2)
+        {
+            is_numbers_equal = false;
+            is_number1_bigger = false;
+            break;
+        }
+
+        it1++;
+        it2++;
+    }
+
+    return is_numbers_equal;
+}
+
+bool LongInteger::operator!=(const LongInteger& b)
+{
+    return !operator==(b);
+}
+
+bool LongInteger::operator<=(const LongInteger& b)
+{
+    return operator<(b) || operator==(b);
+}
+
+bool LongInteger::operator>=(const LongInteger& b)
+{
+    return !operator<(b);
 }
 
 void LongInteger::make_equal_length(LongInteger &number1, LongInteger &number2)
