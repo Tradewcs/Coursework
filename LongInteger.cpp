@@ -458,14 +458,13 @@ LongInteger &LongInteger::operator*=(const LongInteger& b)
 
     int carry = 0;
 
-    
-    List<u_int16_t>::Iterator *it_result_save = nullptr;
+    List<u_int16_t>::Iterator tmp = result.rbegin();
+    List<u_int16_t>::Iterator *it_result_save = &tmp;
 
     auto it2 = b.digits.rbegin();
     while (it2 != b.digits.rend())
     {
-
-        auto it_result = result.rbegin();
+        auto it_result = *it_result_save;
         auto it1 = this->digits.rbegin();
         // std::cout << *it1 << std::endl;
         while (it1 != this->digits.rend())
@@ -479,12 +478,12 @@ LongInteger &LongInteger::operator*=(const LongInteger& b)
             *it_result = tmp % base;
             it_result--;
 
-            if (it_result_save == nullptr) {
-                it_result_save = &it_result;
-            }
+
+            *it_result_save = it_result;
 
             it1--;
         }
+        std::cout << carry  << " " << *it_result << std::endl;
 
         // printList<u_int16_t>(result);
 
