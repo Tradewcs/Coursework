@@ -6,6 +6,7 @@ class LongInteger {
 private:
     List<u_int16_t> digits;
     bool is_negative;
+    const int base;
 
 public:
     LongInteger();
@@ -56,6 +57,8 @@ public:
 
 private:
 public:    
+
+    LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);   
     void make_equal_length(LongInteger& a, LongInteger& b);
     void make_equal_length(List<int>& a, List<int>& b);
     void make_equal_length(List<u_int16_t>& a, List<u_int16_t>& b);

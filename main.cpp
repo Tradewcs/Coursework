@@ -22,19 +22,19 @@ int main1() {
 
 }
 
-int main2()
+int main()
 {
     LongInteger a("-51000000000000041244146780000017234546");
     LongInteger b("-0");
 
-
-    cout << a << " " << b << endl;
-    cout << (a + b) << endl;
+    cout << a << endl;
+    cout << a.multiply_LongInteger_by_digit(a, -9) << endl;
+    cout << a << endl;
 
     return 0;
 }
 
-int main()
+int main3()
 {
     LongInteger a = -510;
     LongInteger b = 510;
