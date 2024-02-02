@@ -44,14 +44,14 @@ public:
     LongInteger& operator++();
     LongInteger operator++(int);
 
-    bool operator<(const LongInteger& b);
-    bool operator>(const LongInteger& b);
+    bool operator<(const LongInteger& b) const;
+    bool operator>(const LongInteger& b) const;
 
-    bool operator<=(const LongInteger& b);
-    bool operator>=(const LongInteger& b);
+    bool operator<=(const LongInteger& b) const;
+    bool operator>=(const LongInteger& b) const;
 
-    bool operator==(const LongInteger& b);
-    bool operator!=(const LongInteger& b);
+    bool operator==(const LongInteger& b) const;
+    bool operator!=(const LongInteger& b) const;
 
     // LongInteger& power(const LongInteger)
 
@@ -59,9 +59,8 @@ private:
 public:    
 
     LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);   
-    void make_equal_length(LongInteger& a, LongInteger& b);
-    void make_equal_length(List<int>& a, List<int>& b);
-    void make_equal_length(List<u_int16_t>& a, List<u_int16_t>& b);
-    void remove_heading_zeros(List<u_int16_t> &result);
+    static void make_equal_length(LongInteger& a, LongInteger& b);
+    static void make_equal_length(List<u_int16_t>& a, List<u_int16_t>& b);
+    void remove_heading_zeros();
     void remove_heading_zeros(List<int> &result);
 };

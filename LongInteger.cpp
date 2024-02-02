@@ -273,17 +273,17 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
         return (*this).operator+=(tmp);
     }
 
-    List<int> number1;
-    List<int> number2;
+    List<u_int16_t> number1;
+    List<u_int16_t> number2;
 
     for (u_int16_t digit : this->digits)
     {
-        number1.insertBack(static_cast<int>(digit));
+        number1.insertBack(digit);
     }
 
     for (u_int16_t digit : num.digits)
     {
-        number2.insertBack(static_cast<int>(digit));
+        number2.insertBack(digit);
     }
 
     make_equal_length(number1, number2);
@@ -388,9 +388,9 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
         this->is_negative = !this->is_negative;
     }
 
-    remove_heading_zeros(result);
 
     this->digits = result;
+    (*this).remove_heading_zeros();
 
     return *this;
 }
@@ -454,59 +454,63 @@ LongInteger LongInteger::multiply_LongInteger_by_digit(const LongInteger& num, i
 
 LongInteger &LongInteger::operator*=(const LongInteger& b)
 {
-    List<u_int16_t> result(this->digits.getSize() + 1);
+    if ((*this) == LongInteger(0))
+    {
+        return *this;
+    }
+
+    if (b == LongInteger(0))
+    {
+        *this = LongInteger(0);
+        return *this;
+    }
+
+    List<u_int16_t> result(this->digits.getSize() + b.digits.getSize());
 
     int carry = 0;
 
-    List<u_int16_t>::Iterator tmp = result.rbegin();
-    List<u_int16_t>::Iterator *it_result_save = &tmp;
+    List<u_int16_t>::Iterator it_result_save = result.rbegin();
 
     auto it2 = b.digits.rbegin();
     while (it2 != b.digits.rend())
     {
-        auto it_result = *it_result_save;
+        bool is_result_saved = false;
+
+        auto it_result = it_result_save;
         auto it1 = this->digits.rbegin();
-        // std::cout << *it1 << std::endl;
         while (it1 != this->digits.rend())
         {
-            std::cout << carry  << " " << *it_result << std::endl;
             int tmp = (*it1) * (*it2) + carry + (*it_result);
-            std::cout << *it1 << " " << *it2 << std::endl;
-            std::cout << tmp << std::endl;
             carry = tmp / base;
 
             *it_result = tmp % base;
             it_result--;
 
-
-            *it_result_save = it_result;
+            if (!is_result_saved) {
+                it_result_save = it_result;
+                is_result_saved = true;
+            }
 
             it1--;
         }
-        std::cout << carry  << " " << *it_result << std::endl;
 
-        // printList<u_int16_t>(result);
-
-        **it_result_save = carry;
+        *it_result = carry;
         carry = 0;
-
-        if (*this->digits.begin() == 0) {
-            this->digits.popFront();
-        }
 
         it2--;
     }
 
-    auto it_result = result.rbegin();
-    while (carry != 0)
+    if (carry != 0)
     {
         result.insertFront(0);
+        auto it_result = result.begin();
         *it_result = carry % base;
-        carry /= base;
+        // carry /= base;
     }
 
     (*this).digits = result;
     (*this).is_negative = (is_negative != b.is_negative);
+    (*this).remove_heading_zeros();
 
     return *this;
 }
@@ -521,7 +525,7 @@ LongInteger LongInteger::operator*(const LongInteger& b) const
 }
 
 
-bool LongInteger::operator<(const LongInteger& b)
+bool LongInteger::operator<(const LongInteger& b) const
 {
     if (this->is_negative != b.is_negative)
     {
@@ -572,12 +576,12 @@ bool LongInteger::operator<(const LongInteger& b)
     }
 }
 
-bool LongInteger::operator>(const LongInteger& b)
+bool LongInteger::operator>(const LongInteger& b) const
 {
     return !operator<=(b);
 }
 
-bool LongInteger::operator==(const LongInteger& b)
+bool LongInteger::operator==(const LongInteger& b) const
 {
     if (this->is_negative != b.is_negative)
     {
@@ -616,17 +620,17 @@ bool LongInteger::operator==(const LongInteger& b)
     return is_numbers_equal;
 }
 
-bool LongInteger::operator!=(const LongInteger& b)
+bool LongInteger::operator!=(const LongInteger& b) const
 {
     return !operator==(b);
 }
 
-bool LongInteger::operator<=(const LongInteger& b)
+bool LongInteger::operator<=(const LongInteger& b) const
 {
     return operator<(b) || operator==(b);
 }
 
-bool LongInteger::operator>=(const LongInteger& b)
+bool LongInteger::operator>=(const LongInteger& b) const
 {
     return !operator<(b);
 }
@@ -651,26 +655,6 @@ void LongInteger::make_equal_length(LongInteger &number1, LongInteger &number2)
     }
 }
 
-void LongInteger::make_equal_length(List<int> &number1, List<int> &number2)
-{
-    int diff_length = number1.getSize() - number2.getSize();
-
-    if (diff_length > 0)
-    {
-        for (int i = 0; i < diff_length; i++)
-        {
-            number2.insertFront(0);
-        }
-    }
-    else if (diff_length < 0)
-    {
-        for (int i = 0; i < -diff_length; i++)
-        {
-            number1.insertFront(0);
-        }
-    }
-}
-
 void LongInteger::make_equal_length(List<u_int16_t> &number1, List<u_int16_t> &number2)
 {
     int diff_length = number1.getSize() - number2.getSize();
@@ -691,14 +675,14 @@ void LongInteger::make_equal_length(List<u_int16_t> &number1, List<u_int16_t> &n
     }
 }
 
-void LongInteger::remove_heading_zeros(List<u_int16_t> &result)
+void LongInteger::remove_heading_zeros()
 {
-    auto it = result.begin();
-    while (it != result.end())
+    auto it = this->digits.begin();
+    while (it != this->digits.end())
     {
         if (*it == static_cast<u_int16_t>(0))
         {
-            result.popFront();
+            this->digits.popFront();
             ++it;
         }
         else
@@ -707,10 +691,10 @@ void LongInteger::remove_heading_zeros(List<u_int16_t> &result)
         }
     }
 
-    if (result.isEmpty())
+    if (this->digits.isEmpty())
     {
         is_negative = false;
-        result.insertBack((u_int16_t)0);
+        this->digits.insertBack((u_int16_t)0);
     }
 }
 

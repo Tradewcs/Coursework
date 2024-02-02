@@ -49,8 +49,8 @@ int main3()
 
 int main()
 {
-    LongInteger a("2133456");
-    LongInteger b("420047");
+    LongInteger a("0");
+    LongInteger b("-4200479067734523462498521834493485673219619999888900003");
 
     
 
