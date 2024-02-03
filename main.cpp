@@ -47,7 +47,7 @@ int main3()
 }
 
 
-int main()
+int main4()
 {
     LongInteger a("0");
     LongInteger b("-4200479067734523462498521834493485673219619999888900003");
@@ -57,6 +57,18 @@ int main()
     cout << a << " " << b << endl;
     cout << (a * b) << endl;
     
+
+
+    return 0;
+}
+
+
+int main()
+{
+    LongInteger a(430000);
+    LongInteger b(4894);
+
+    cout << (a + b) << endl;
 
 
     return 0;

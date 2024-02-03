@@ -5,6 +5,18 @@
 
 #include "LongInteger.h"
 
+// remove this sheet
+template <typename T>
+void printList(List<T> lst)
+{
+    for (auto item : lst)
+    {
+        std::cout << item << " ";
+    }
+    std::cout << std::endl;
+}
+
+
 LongInteger::LongInteger()
 {
     is_negative = false;
@@ -190,6 +202,8 @@ LongInteger LongInteger::operator++(int)
     return tmp;
 }
 
+
+
 LongInteger &LongInteger::operator+=(const LongInteger &num)
 {
     if (!is_negative && num.is_negative)
@@ -212,8 +226,6 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
 
         return *this;
     }
-    
-    const int base = base;
 
     List<u_int16_t> number1 = (*this).digits;
     List<u_int16_t> number2 = num.digits;;
@@ -223,8 +235,10 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
     int carry = 0;
     make_equal_length(number1, number2);
 
+
     auto it1 = number1.rbegin();
     auto it2 = number2.rbegin();
+
 
     while (it1 != number1.rend())
     {
@@ -233,7 +247,7 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
         carry = sum / base;
         sum = sum % base;
 
-        result.insertFront(static_cast<u_int16_t>(sum));
+        result.insertFront(sum);
 
         --it1;
         --it2;
@@ -241,10 +255,12 @@ LongInteger &LongInteger::operator+=(const LongInteger &num)
 
     if (carry > 0)
     {
-        result.insertFront(static_cast<u_int16_t>(carry));
+        result.insertFront(carry);
     }
 
     this->digits = result;
+    // printList<u_int16_t>(number1);
+    // printList<u_int16_t>(number2);
 
     return *this;
 }
@@ -403,16 +419,6 @@ LongInteger LongInteger::operator-(const LongInteger& other) const
     return tmp;
 }
 
-// remove this sheet
-template <typename T>
-void printList(List<T> lst)
-{
-    for (auto item : lst)
-    {
-        std::cout << item << " ";
-    }
-    std::cout << std::endl;
-}
 
 
 ///===========================================================================================================
@@ -520,6 +526,67 @@ LongInteger LongInteger::operator*(const LongInteger& b) const
 {
     LongInteger tmp = *this;
     tmp *= b;
+
+    return tmp;
+}
+
+LongInteger &LongInteger::operator/=(const LongInteger &b)
+{
+    if (b == LongInteger(0))
+    {
+        throw std::invalid_argument("Division by zero");
+    }
+
+    LongInteger divident(*this);
+    LongInteger divisor(b);
+
+    LongInteger quotient(0);
+    // LongInteger remainder(0);
+
+    auto it1 = divident.digits.begin();
+    while (it1 != divident.digits.end())
+    {
+        int part_of_divident = *it1;
+        LongInteger tmp(part_of_divident);
+        while (tmp < divisor)
+        {
+            tmp *= base;
+            it1++;
+
+            std::cout << tmp << " " << LongInteger(*it1) << std::endl;
+
+            tmp += LongInteger(*it1);
+
+            std::cout << tmp << " " << LongInteger(*it1) << std::endl;
+        }
+        
+        u_int16_t quotient_digit = 0;
+        LongInteger remainder = tmp;
+
+        while (remainder >= divisor)
+        {
+            remainder -= divisor;
+            ++quotient_digit;
+        }
+
+        quotient.digits.insertBack(quotient_digit);
+
+        it1++;
+    }
+
+
+    quotient.is_negative = this->is_negative != b.is_negative;
+    quotient.remove_heading_zeros();
+
+    *this = quotient;
+
+    return *this;
+}
+
+LongInteger LongInteger::operator/(const LongInteger &b) const
+{
+    LongInteger tmp = *this;
+    tmp /= b;
 
     return tmp;
 }
