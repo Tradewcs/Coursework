@@ -63,12 +63,26 @@ int main4()
 }
 
 
+int main5()
+{
+    LongInteger a("10");
+    LongInteger b("2");
+
+    LongInteger c = a % b;
+    cout << c << endl;
+    // cout << (a / b) << endl;
+
+    return 0;
+}
+
 int main()
 {
-    LongInteger a(430000);
-    LongInteger b(4894);
+    LongInteger a = 6;
+    LongInteger b = 4;
 
-    cout << (a + b) << endl;
+    a %= b;
+
+    cout << a << endl;
 
 
     return 0;

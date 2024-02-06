@@ -537,50 +537,75 @@ LongInteger &LongInteger::operator/=(const LongInteger &b)
         throw std::invalid_argument("Division by zero");
     }
 
-    LongInteger divident(*this);
-    LongInteger divisor(b);
+    if (abs(*this) < abs(b)) {
+        *this = LongInteger(0);
+        return *this;
+    }
+    
+    LongInteger result = 0;
+    bool result_is_negative = is_negative != b.is_negative;
 
-    LongInteger quotient(0);
-    // LongInteger remainder(0);
+    LongInteger number1 = abs(*this);
+    LongInteger number2 = abs(b);
 
-    auto it1 = divident.digits.begin();
-    while (it1 != divident.digits.end())
+    while (number1 > number2)
     {
-        int part_of_divident = *it1;
-        LongInteger tmp(part_of_divident);
-        while (tmp < divisor)
+        LongInteger tmp = 0;
+        auto it_this = (number1).digits.begin();
+        while (tmp < number2 && it_this != (number1).digits.end())
         {
             tmp *= base;
-            it1++;
+            tmp += *it_this;
 
-            std::cout << tmp << " " << LongInteger(*it1) << std::endl;
-
-            tmp += LongInteger(*it1);
-
-            std::cout << tmp << " " << LongInteger(*it1) << std::endl;
-        }
-        
-        u_int16_t quotient_digit = 0;
-        LongInteger remainder = tmp;
-
-        while (remainder >= divisor)
-        {
-            remainder -= divisor;
-            ++quotient_digit;
+            it_this++;
         }
 
-        quotient.digits.insertBack(quotient_digit);
+        LongInteger part_of_result = binarySearchDivide(tmp, number2);
+        result *= base;
+        result += part_of_result;
 
-        it1++;
+        LongInteger num_to_substract = part_of_result * number2;
+        reverse_make_equal_length(number1, num_to_substract);
+
+        number1 -= num_to_substract;
+
+        if (part_of_result == LongInteger(0)) {
+            break;
+        }
     }
 
-
-    quotient.is_negative = this->is_negative != b.is_negative;
-    quotient.remove_heading_zeros();
-
-    *this = quotient;
+    *this = result;
+    (*this).is_negative = result_is_negative;
 
     return *this;
+}
+
+LongInteger LongInteger::binarySearchDivide(const LongInteger& divident, const LongInteger& divisor)
+{
+    int x = 0;
+
+    int l = 0;
+    int r = base;
+
+    while (l <= r)
+    {
+        int m = (l + r) >> 1;
+
+        LongInteger current = divisor * m;
+        if (current <= divident)
+        {
+            x = m;
+            l = m + 1;
+        }
+        else
+        {
+            r = m - 1;
+        }
+    }
+
+    LongInteger result(x);
+
+    return result;
 }
 
 LongInteger LongInteger::operator/(const LongInteger &b) const
@@ -591,6 +616,20 @@ LongInteger LongInteger::operator/(const LongInteger &b) const
     return tmp;
 }
 
+LongInteger &LongInteger::operator%=(const LongInteger &b)
+{
+    *this -= ((*this) / b) * b;
+
+    return *this;
+}
+
+LongInteger LongInteger::operator%(const LongInteger& b) const
+{
+    LongInteger tmp = *this;
+    tmp %= *this;
+
+    return tmp;
+}
 
 bool LongInteger::operator<(const LongInteger& b) const
 {
@@ -701,6 +740,27 @@ bool LongInteger::operator>=(const LongInteger& b) const
 {
     return !operator<(b);
 }
+
+void LongInteger::reverse_make_equal_length(LongInteger &number1, LongInteger &number2)
+{
+    int diff_length = number1.digits.getSize() - number2.digits.getSize();
+
+    if (diff_length > 0)
+    {
+        for (int i = 0; i < diff_length; i++)
+        {
+            number2.digits.insertBack((u_int16_t)0);
+        }
+    }
+    else if (diff_length < 0)
+    {
+        for (int i = 0; i < -diff_length; i++)
+        {
+            number1.digits.insertBack((u_int16_t)0);
+        }
+    }
+}
+
 
 void LongInteger::make_equal_length(LongInteger &number1, LongInteger &number2)
 {

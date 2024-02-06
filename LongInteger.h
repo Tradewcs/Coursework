@@ -34,12 +34,15 @@ public:
     LongInteger operator*(const LongInteger& b) const;
     LongInteger operator/(const LongInteger& b) const;
     // + - * / % ++ -- 
+    LongInteger operator%(const LongInteger& b) const;
     
     LongInteger& operator+=(const LongInteger& b);
     LongInteger& operator-=(const LongInteger& b);
 
     LongInteger& operator*=(const LongInteger& b);
     LongInteger& operator/=(const LongInteger& b);
+
+    LongInteger& operator%=(const LongInteger& b);
 
     LongInteger& operator++();
     LongInteger operator++(int);
@@ -58,7 +61,9 @@ public:
 private:
 public:    
 
-    LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);   
+    LongInteger binarySearchDivide(const LongInteger& divident, const LongInteger& divisor);
+    LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);
+    static void reverse_make_equal_length(LongInteger& a, LongInteger& b);
     static void make_equal_length(LongInteger& a, LongInteger& b);
     static void make_equal_length(List<u_int16_t>& a, List<u_int16_t>& b);
     void remove_heading_zeros();
