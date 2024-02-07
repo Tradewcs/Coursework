@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cctype>
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 
@@ -72,12 +73,12 @@ LongInteger::LongInteger(std::string const &str_num)
         num.erase(num.begin());
     }
 
-
-    for (int i = num.size() - 1; i >= 0; i -= 4) {
+    int log10_base = log10(base);
+    for (int i = num.size() - 1; i >= 0; i -= log10_base) {
         int value = 0;
         int multiplier = 1;
 
-        for (int j = 0; j < 4 && i - j >= 0; ++j) {
+        for (int j = 0; j < log10_base && i - j >= 0; ++j) {
             value += (num[i - j] - '0') * multiplier;
             multiplier *= 10;
         }
@@ -171,7 +172,7 @@ std::ostream &operator<<(std::ostream &os, const LongInteger &obj)
     bool is_first_group = true;
     for (u_int16_t group : obj.digits) {
         if (!is_first_group) {
-            os << std::setw(4) << std::setfill('0');
+            os << std::setw(log10(obj.base)) << std::setfill('0');
         }
 
         os << group;
@@ -548,7 +549,7 @@ LongInteger &LongInteger::operator/=(const LongInteger &b)
     LongInteger number1 = abs(*this);
     LongInteger number2 = abs(b);
 
-    while (number1 > number2)
+    while (number1 >= number2)
     {
         LongInteger tmp = 0;
         auto it_this = (number1).digits.begin();

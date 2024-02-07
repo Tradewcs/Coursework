@@ -47,15 +47,15 @@ int main3()
 }
 
 
-int main4()
+int main()
 {
-    LongInteger a("0");
-    LongInteger b("-4200479067734523462498521834493485673219619999888900003");
+    LongInteger a("2505");
+    LongInteger b("5");
 
     
 
     cout << a << " " << b << endl;
-    cout << (a * b) << endl;
+    cout << (a / b) << endl;
     
 
 
@@ -75,10 +75,10 @@ int main5()
     return 0;
 }
 
-int main()
+int main6()
 {
-    LongInteger a = 6;
-    LongInteger b = 4;
+    LongInteger a("-523484713653798542498561294423");
+    LongInteger b("-54251438423874623484");
 
     a %= b;
 
