@@ -47,7 +47,7 @@ int main3()
 }
 
 
-int main()
+int main4()
 {
     LongInteger a("2505");
     LongInteger b("5");
@@ -75,10 +75,10 @@ int main5()
     return 0;
 }
 
-int main6()
+int main()
 {
-    LongInteger a("-523484713653798542498561294423");
-    LongInteger b("-54251438423874623484");
+    LongInteger a("-3");
+    LongInteger b("-2");
 
     a %= b;
 

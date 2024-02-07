@@ -6,7 +6,7 @@ class LongInteger {
 private:
     List<u_int16_t> digits;
     bool is_negative;
-    static const int base = 10000;
+    static const int base = 10;
 
 public:
     LongInteger();
@@ -61,6 +61,7 @@ public:
 private:
 public:    
 
+    void add_zeros_to_the_end(LongInteger &number, int zeros_count);
     LongInteger binarySearchDivide(const LongInteger& divident, const LongInteger& divisor);
     LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);
     static void reverse_make_equal_length(LongInteger& a, LongInteger& b);

@@ -52,7 +52,8 @@ LongInteger::LongInteger(long long num)
 LongInteger::LongInteger(std::string const &str_num)
 {
     std::string num = str_num;
-    
+    this->is_negative = false;
+
     if (num.empty())
     {
         LongInteger(0);
@@ -85,6 +86,8 @@ LongInteger::LongInteger(std::string const &str_num)
 
         digits.insertFront(value);
     }
+
+    printList<u_int16_t>(digits);
 }
 
 LongInteger::LongInteger(const LongInteger &other) : is_negative(other.is_negative), digits(other.digits) {}
@@ -283,57 +286,35 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 
     if (is_negative && !num.is_negative)
     {
-        // std::cout << "-" << std::endl;
-        
         LongInteger tmp(num);
         tmp.is_negative = true;
         return (*this).operator+=(tmp);
     }
 
-    List<u_int16_t> number1;
-    List<u_int16_t> number2;
+    List<u_int16_t> number1 = (*this).digits;
+    List<u_int16_t> number2 = num.digits;
 
-    for (u_int16_t digit : this->digits)
-    {
-        number1.insertBack(digit);
-    }
-
-    for (u_int16_t digit : num.digits)
-    {
-        number2.insertBack(digit);
-    }
+    // printList<u_int16_t>(number1);
+    // printList<u_int16_t>(number2);
 
     make_equal_length(number1, number2);
 
-    bool is_numbers_equal = true;
-    bool is_number1_bigger = false;
+    // printList<u_int16_t>(number1);
+    // printList<u_int16_t>(number2);
+
+
+    bool is_numbers_equal = *this == num;
+    bool is_number1_bigger = *this > num;
 
     auto it1 = number1.begin();
     auto it2 = number2.begin();
-    while (it1 != number1.end())
-    {
-        if (*it1 > *it2)
-        {
-            is_numbers_equal = false;
-            is_number1_bigger = true;
-            break;
-        }
-        else if (*it1 < *it2)
-        {
-            is_numbers_equal = false;
-            is_number1_bigger = false;
-            break;
-        }
 
-        it1++;
-        it2++;
-    }
 
     if (is_numbers_equal)
     {
 
         List<u_int16_t> res;
-        res.insertBack(static_cast<u_int16_t>(0));
+        res.insertBack(0);
         digits = res;
         is_negative = false;
 
@@ -366,7 +347,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
             }
 
             int r = *it1 - *it2;
-            result.insertFront(static_cast<u_int16_t>(r));
+            result.insertFront(r);
 
             it1--;
             it2--;
@@ -396,7 +377,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
             }
 
             int r = *it2 - *it1;
-            result.insertFront(static_cast<u_int16_t>(r));
+            result.insertFront(r);
 
             it1--;
             it2--;
@@ -414,6 +395,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 
 LongInteger LongInteger::operator-(const LongInteger& other) const
 {
+    std::cout << *this << "\n  " << other << std::endl << std::endl;
     LongInteger tmp = *this;
     tmp -= other;
 
@@ -561,14 +543,28 @@ LongInteger &LongInteger::operator/=(const LongInteger &b)
             it_this++;
         }
 
+        std::cout << "tmp " << tmp << std::endl;
+
         LongInteger part_of_result = binarySearchDivide(tmp, number2);
         result *= base;
         result += part_of_result;
 
+        std::cout << "part_of_result " << part_of_result << std::endl;
+
         LongInteger num_to_substract = part_of_result * number2;
-        reverse_make_equal_length(number1, num_to_substract);
+        add_zeros_to_the_end(num_to_substract, number1.digits.getSize() - tmp.digits.getSize());
+        // reverse_make_equal_length(number1, num_to_substract);
+
+        std::cout << "num_to_substract " << num_to_substract << std::endl;
 
         number1 -= num_to_substract;
+        // tmp -= num_to_substract;
+        // if (tmp == LongInteger(0))
+        // {
+            // result.digits.insertBack(0);
+        // }
+
+        std::cout << "num1 " << number1 << std::endl;
 
         if (part_of_result == LongInteger(0)) {
             break;
@@ -602,6 +598,8 @@ LongInteger LongInteger::binarySearchDivide(const LongInteger& divident, const L
         {
             r = m - 1;
         }
+
+        std::cout << l << " " << r << " " << m << std::endl;
     }
 
     LongInteger result(x);
@@ -619,7 +617,10 @@ LongInteger LongInteger::operator/(const LongInteger &b) const
 
 LongInteger &LongInteger::operator%=(const LongInteger &b)
 {
-    *this -= ((*this) / b) * b;
+    *this = abs(*this);
+    // std::cout << ((*this / abs(b)) * abs(b)) << std::endl;
+    *this -= (*this / abs(b)) * abs(b);
+    (*this).is_negative = b.is_negative;
 
     return *this;
 }
@@ -627,7 +628,7 @@ LongInteger &LongInteger::operator%=(const LongInteger &b)
 LongInteger LongInteger::operator%(const LongInteger& b) const
 {
     LongInteger tmp = *this;
-    tmp %= *this;
+    tmp %= b;
 
     return tmp;
 }
@@ -742,6 +743,14 @@ bool LongInteger::operator>=(const LongInteger& b) const
     return !operator<(b);
 }
 
+void LongInteger::add_zeros_to_the_end(LongInteger &number, int zeros_count)
+{
+    for (int i = 0; i < zeros_count; ++i)
+    {
+        number.digits.insertBack(0);
+    }
+}
+
 void LongInteger::reverse_make_equal_length(LongInteger &number1, LongInteger &number2)
 {
     int diff_length = number1.digits.getSize() - number2.digits.getSize();
@@ -791,14 +800,14 @@ void LongInteger::make_equal_length(List<u_int16_t> &number1, List<u_int16_t> &n
     {
         for (int i = 0; i < diff_length; i++)
         {
-            number2.insertFront((u_int16_t)0);
+            number2.insertFront(0);
         }
     }
     else if (diff_length < 0)
     {
         for (int i = 0; i < -diff_length; i++)
         {
-            number1.insertFront((u_int16_t)0);
+            number1.insertFront(0);
         }
     }
 }
