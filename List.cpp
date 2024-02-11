@@ -249,6 +249,26 @@ void List<T>::clear()
 }
 
 template <typename T>
+void List<T>::reverse()
+{
+    Node<T> *begin = head;
+    Node<T> *end = tail;
+
+    int i = 0;
+    while (i < getSize() / 2)
+    {
+        T tmp = begin->data;
+        begin->data = end->data;
+        end->data = tmp;
+
+        begin = begin->next;
+        end = end->prev;
+
+        ++i;
+    }
+}
+
+template <typename T>
 List<T>::Iterator::Iterator(Node<T> *startNode) : current(startNode) {}
 
 template <typename T>

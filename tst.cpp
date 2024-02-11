@@ -64,7 +64,7 @@ int main2()
 
 int main()
 {
-    LongInteger a("901");
+    LongInteger a("9001");
     LongInteger b("9");
 
     std::cout << a / b << std::endl;

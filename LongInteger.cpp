@@ -395,7 +395,7 @@ LongInteger &LongInteger::operator-=(const LongInteger &num)
 
 LongInteger LongInteger::operator-(const LongInteger& other) const
 {
-    std::cout << *this << "\n  " << other << std::endl << std::endl;
+    // std::cout << *this << "\n  " << other << std::endl << std::endl;
     LongInteger tmp = *this;
     tmp -= other;
 
@@ -520,62 +520,106 @@ LongInteger &LongInteger::operator/=(const LongInteger &b)
         throw std::invalid_argument("Division by zero");
     }
 
-    if (abs(*this) < abs(b)) {
+    if (abs(*this) < abs(b))
+    {
         *this = LongInteger(0);
         return *this;
     }
-    
-    LongInteger result = 0;
-    bool result_is_negative = is_negative != b.is_negative;
 
-    LongInteger number1 = abs(*this);
-    LongInteger number2 = abs(b);
+    LongInteger result;
+    result.digits.popBack();
 
-    while (number1 >= number2)
+    LongInteger current_value = 0;
+    for (auto it_this = (*this).digits.rbegin(); it_this != (*this).digits.rend(); --it_this)
     {
-        LongInteger tmp = 0;
-        auto it_this = (number1).digits.begin();
-        while (tmp < number2 && it_this != (number1).digits.end())
-        {
-            tmp *= base;
-            tmp += *it_this;
+        current_value = current_value * base;
+        *current_value.digits.rbegin() = *it_this;
 
-            it_this++;
-        }
-
-        std::cout << "tmp " << tmp << std::endl;
-
-        LongInteger part_of_result = binarySearchDivide(tmp, number2);
-        result *= base;
-        result += part_of_result;
-
-        std::cout << "part_of_result " << part_of_result << std::endl;
-
-        LongInteger num_to_substract = part_of_result * number2;
-        add_zeros_to_the_end(num_to_substract, number1.digits.getSize() - tmp.digits.getSize());
-        // reverse_make_equal_length(number1, num_to_substract);
-
-        std::cout << "num_to_substract " << num_to_substract << std::endl;
-
-        number1 -= num_to_substract;
-        // tmp -= num_to_substract;
-        // if (tmp == LongInteger(0))
-        // {
-            // result.digits.insertBack(0);
-        // }
-
-        std::cout << "num1 " << number1 << std::endl;
-
-        if (part_of_result == LongInteger(0)) {
-            break;
-        }
+        LongInteger x = binarySearchDivide(current_value, abs(b));
+        current_value -= abs(b) * x;
+        
+        result.digits.insertFront(*x.digits.begin());
     }
 
+    result.remove_heading_zeros();
+    
+    result.is_negative = (*this).is_negative != b.is_negative;
     *this = result;
-    (*this).is_negative = result_is_negative;
-
+    
     return *this;
 }
+
+// LongInteger &LongInteger::operator/=(const LongInteger &b)
+// {
+//     if (b == LongInteger(0))
+//     {
+//         throw std::invalid_argument("Division by zero");
+//     }
+
+//     if (abs(*this) < abs(b)) {
+//         *this = LongInteger(0);
+//         return *this;
+//     }
+    
+//     LongInteger result = 0;
+//     bool result_is_negative = is_negative != b.is_negative;
+
+//     LongInteger number1 = abs(*this);
+//     LongInteger number2 = abs(b);
+
+//     LongInteger tmp = 0;
+//     auto it_this = number1.digits.begin();
+//     while (it_this != number1.digits.end())
+//     {
+//         while (tmp.digits.getSize() < number2.digits.getSize() && it_this != (number1).digits.end())
+//         {
+//             // tmp *= base;
+//             // tmp += *it_this;
+            
+//             for (int i = 0; i < log10(base); ++i)
+//             {
+//                 tmp.digits.insertBack(*it_this);
+//                 it_this++;
+//             }
+
+//         }
+
+//         std::cout << "tmp " << tmp << std::endl;
+
+//         LongInteger part_of_result = binarySearchDivide(tmp, number2);
+//         // result *= base;
+//         // result += part_of_result;
+
+//         for (auto digit : part_of_result.digits)
+//         {
+//             result.digits.insertBack(digit);
+//         }
+
+
+//         std::cout << "part_of_result " << part_of_result << std::endl;
+
+//         LongInteger num_to_substract = part_of_result * number2;
+//         add_zeros_to_the_end(num_to_substract, number1.digits.getSize() - tmp.digits.getSize());
+//         // reverse_make_equal_length(number1, num_to_substract);
+
+//         std::cout << "num_to_substract " << num_to_substract << std::endl;
+
+//         // number1 -= num_to_substract;
+//         tmp -= num_to_substract;
+//         tmp.remove_heading_zeros();
+//         // if (tmp == LongInteger(0))
+//         // {
+//         //     result.digits.insertBack(0);
+//         // }
+
+//         std::cout << "num1 " << number1 << std::endl;
+//     }
+
+//     *this = result;
+//     (*this).is_negative = result_is_negative;
+
+//     return *this;
+// }
 
 LongInteger LongInteger::binarySearchDivide(const LongInteger& divident, const LongInteger& divisor)
 {
@@ -599,7 +643,7 @@ LongInteger LongInteger::binarySearchDivide(const LongInteger& divident, const L
             r = m - 1;
         }
 
-        std::cout << l << " " << r << " " << m << std::endl;
+        // std::cout << l << " " << r << " " << m << std::endl;
     }
 
     LongInteger result(x);

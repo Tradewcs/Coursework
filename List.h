@@ -38,6 +38,7 @@ public:
     T popOnIndex(int index);
 
     void clear();
+    void reverse();
 
     class Iterator {
     private:

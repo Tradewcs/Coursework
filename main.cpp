@@ -75,7 +75,7 @@ int main5()
     return 0;
 }
 
-int main()
+int main6()
 {
     LongInteger a("-3");
     LongInteger b("-2");
@@ -83,6 +83,22 @@ int main()
     a %= b;
 
     cout << a << endl;
+
+
+    return 0;
+}
+
+
+int main()
+{
+    // LongInteger a = 901;
+    // LongInteger b = 9;
+
+    LongInteger a = 25;
+    LongInteger b = 5;
+
+    cout << a / b << endl;
+
 
 
     return 0;
