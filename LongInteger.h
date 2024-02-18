@@ -62,6 +62,7 @@ private:
 public:    
 
     void add_zeros_to_the_end(LongInteger &number, int zeros_count);
+    void add_zeros_to_the_front(LongInteger &number, int zeros_count);
     LongInteger binarySearchDivide(const LongInteger& divident, const LongInteger& divisor);
     LongInteger multiply_LongInteger_by_digit(const LongInteger& num, int digit);
     static void reverse_make_equal_length(LongInteger& a, LongInteger& b);
