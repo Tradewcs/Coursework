@@ -141,11 +141,11 @@ int main7()
 
 int main()
 {
-    // LongInteger a("7400000130000064924751000000000001");
-    // LongInteger b("48327421500003472");
+    LongInteger a("7400000130000064924751000000000001");
+    LongInteger b("48327421500003472");
 
-    LongInteger a = 9010;
-    LongInteger b = 90;
+    // LongInteger a = 9010;
+    // LongInteger b = 90;
 
     cout << a / b << endl;
 
