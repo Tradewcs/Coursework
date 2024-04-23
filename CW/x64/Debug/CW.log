@@ -1,0 +1,8 @@
+﻿  LongInteger.cpp
+D:\CW\CW\LongInteger.cpp(67,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\CW\CW\LongInteger.cpp(68,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CW\CW\LongInteger.cpp(182,34): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
+  MyForm.cpp
+  Generating Code...
+  List.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  CW.vcxproj -> D:\CW\x64\Debug\CW.exe

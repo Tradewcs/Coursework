@@ -1,0 +1,6 @@
+C:\Users\trade\source\repos\CW\CW\x64\Debug\CW.vcxproj.AssemblyReference.cache
+C:\Users\trade\source\repos\CW\CW\x64\Debug\CW.MyForm.resources
+C:\Users\trade\source\repos\CW\CW\x64\Debug\CW.vcxproj.GenerateResource.cache
+D:\CW\CW\x64\Debug\CW.vcxproj.AssemblyReference.cache
+D:\CW\CW\x64\Debug\CW.MyForm.resources
+D:\CW\CW\x64\Debug\CW.vcxproj.GenerateResource.cache
